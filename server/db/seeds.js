@@ -24,9 +24,9 @@ db.stocks.insertMany([
         avgPurchasePrice: 389.95
     }
     {
-        name: "Lloyds Banking Group PLC",
+        name: "Lloyds Banking Group plc",
         symbol: "LLOY",
-        purchaseDate: "26/08/2021",
+        purchaseDate: "05/01/2022",
         numberOfStocks: 10,
         avgPurchasePrice: 54.55
     }
