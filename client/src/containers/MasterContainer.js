@@ -12,7 +12,7 @@ const MasterContainer = () => {
     return (
     <>
       <h2>Master Container</h2>
-
+      
       </>
     );
 }
