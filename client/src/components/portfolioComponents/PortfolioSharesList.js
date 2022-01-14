@@ -2,8 +2,8 @@
 
 const PortfolioSharesList = ({heldShares, addNewShares}) => {
 
-    const heldSharesItems = heldShares.map((heldShare, index) => {
-        return <HeldSharesItem />
+    const portfolioSharesItems = heldShares.map((heldShare, index) => {
+        return <PortfolioSharesItem heldShare={heldShare} key={index} addNewShares={addNewShares} />
     })
 
 
@@ -12,7 +12,7 @@ const PortfolioSharesList = ({heldShares, addNewShares}) => {
 
         <>
             <ul>
-                {heldSharesItems}
+                {portfolioSharesItems}
             </ul>
         </>
 
