@@ -1,6 +1,6 @@
 
 
-const PortfolioSharesList = () => {
+const PortfolioSharesList = ({heldShares, addNewShares}) => {
 
     const heldSharesItems = heldShares.map((heldShare, index) => {
         return <HeldSharesItem />
