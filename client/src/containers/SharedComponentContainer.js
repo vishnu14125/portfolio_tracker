@@ -1,6 +1,16 @@
+import Header from "../components/sharedComponents/Header";
+
 const SharedComponentContainer = () => {
-     return (
-        <h1>Shared Component</h1>
+   
+   const title = "Welcome to the Portfolio Tracker App"
+   
+   return (
+        <>
+            <hr/>
+            <h1>This is the Shared Component Container</h1>
+            <Header title={ title }/>
+            <hr/>
+         </>
      )
 }
 
