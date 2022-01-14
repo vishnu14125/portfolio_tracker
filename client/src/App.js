@@ -1,20 +1,13 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
-import {apikey2} from './services/apikey';
-import {getCurrentStocks} from './services/ApiServices'
+import MasterContainer from './master/MasterContainer';
 
 function App() {
-
-  const [apiData, setApiData] = useState([]);
-
-  useEffect(() => {
-    getCurrentStocks()
-    .then(data => setApiData(data))
-  },[])
-
   return (
-    <h1>Stock App</h1>
+    <>
+      <h1>Stock App - app.js</h1>
+      <MasterContainer />
+    </>
   );
-}
+  }
 
-export default App;
+export default App
