@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getHeldShares, postNewShareAdd } from "../services/PortfolioServices";
-
+import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
 
 const PortfolioContainer = () => {
 
@@ -26,6 +26,7 @@ const PortfolioContainer = () => {
 
         <>
             <p>Portfolio Container</p>
+            <PortfolioSharesList heldShares={heldShares} addNewShares={addNewShares} />
         </>
 
     );
