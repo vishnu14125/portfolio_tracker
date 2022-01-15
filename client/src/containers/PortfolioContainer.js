@@ -8,8 +8,6 @@ const PortfolioContainer = () => {
 
     const [heldShares, setHeldShares] = useState([]);
 
-
-
     useEffect(() => {
         getHeldShares()
         .then(shares => setHeldShares(shares))
@@ -30,15 +28,12 @@ const PortfolioContainer = () => {
         .then(savedNewShares => setHeldShares([...heldShares, savedNewShares]))
     }
 
-
-
-
     return (  
 
         <>
             <p>Portfolio Container</p>
             <PortfolioSharesList heldShares={heldShares} removeHeldSharesInCompany={removeHeldSharesInCompany} />
-            <Chart />
+            <Chart sharesData={heldShares} />
         </>
 
     );
