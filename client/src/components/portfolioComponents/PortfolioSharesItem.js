@@ -5,7 +5,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
 
 
     const handleDelete = () => {
-        deleteShares(heldShare_id) //Delete from DB
+        deleteShares(heldShare._id) //Delete from DB
         .then(() => {
             removeHeldSharesInCompany(heldShare.id) //Update State
         })
