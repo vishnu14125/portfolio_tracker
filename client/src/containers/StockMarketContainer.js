@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {getCurrentStocks} from '../services/ApiServices';
 import StockMarketList from '../components/stockMarketComponents/StockMarketList';
 
-const StockMarketContainer = ({getCurrentStocks, stocks}) => {
+const StockMarketContainer = ({stocks}) => {
 
     // const loadAllStocks = getCurrentStocks()
 
