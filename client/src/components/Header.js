@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Header = ({title}) => {
+const Header = () => {
     return (
         <>    
-            <h1>This is the main page header</h1>
-            <h2>The page subtitle is: {title}</h2>
+            <h1>This is Our Main Header</h1>
+            <h2>This could be a page title that changes</h2>
         </>
     )
 }

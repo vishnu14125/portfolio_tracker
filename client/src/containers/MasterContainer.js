@@ -21,7 +21,7 @@ const MasterContainer = () => {
   
     return (
     <>
-      <Header title="Our Stock Portfolio App"/>
+      <Header />
       <Router>
         <NavBar />
         <Routes>
