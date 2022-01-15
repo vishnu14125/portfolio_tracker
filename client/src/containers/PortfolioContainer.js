@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { deleteShares, getHeldShares, postNewShareAdd } from "../services/PortfolioServices";
 import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
+import Chart from '../components/sharedComponents/Chart';
 
 const PortfolioContainer = () => {
 
@@ -37,6 +38,7 @@ const PortfolioContainer = () => {
         <>
             <p>Portfolio Container</p>
             <PortfolioSharesList heldShares={heldShares} removeHeldSharesInCompany={removeHeldSharesInCompany} />
+            <Chart />
         </>
 
     );

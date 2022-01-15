@@ -10,9 +10,9 @@ app.use(express.json());
 MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true})
 .then((client) => {
     const db = client.db('portfolio');
-    const stocksCollection = db.collection('stocks');
-    const stocksRouter = createRouter(stocksCollection);
-    app.use('/api/stocks', stocksRouter);
+    const sharesCollection = db.collection('shares');
+    const sharesRouter = createRouter(sharesCollection);
+    app.use('/api/shares', sharesRouter);
 })
 .catch(console.error)
 
