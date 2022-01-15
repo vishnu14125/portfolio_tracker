@@ -15,5 +15,3 @@ const StockMarketContainer = ({stocks}) => {
 }
 
 export default StockMarketContainer;
-
-//Dummy code to allow for router development - to be deleted when merged with develop branch
