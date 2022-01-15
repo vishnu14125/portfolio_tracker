@@ -20,7 +20,7 @@ const PortfolioContainer = () => {
         const temp = heldShares.map(shares => shares);
         const indexToDelete = temp.map(shares => shares._id).indexOf(id);
         temp.splice(indexToDelete, 1);
-        setHeldShares(temo);
+        setHeldShares(temp);
     }
 
     //ADD A SHARE IN A STOCK WE DO NOT HAVE IN OUR PORTFOLIO
