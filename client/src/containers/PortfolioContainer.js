@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { deleteShares, getHeldShares, postNewShareAdd } from "../services/PortfolioServices";
-import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesTable";
+import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
 
 const PortfolioContainer = () => {
 
@@ -16,10 +16,10 @@ const PortfolioContainer = () => {
 
     //REMOVE ALL SHARES IN A PARTICULAR COMPANY
     const removeHeldSharesInCompany = (id) => {
-        deleteShares(id) //Delete from DB
-        .then( ()=> {
-            setHeldShares(heldShares.filter(shares => shares._id !== id))
-        }) //Update State
+        const temp = heldShares.map(shares => shares);
+        const indexToDelete = temp.map(shares => shares._id).indexOf(id);
+        temp.splice(indexToDelete, 1);
+        setHeldShares(temo);
     }
 
     //ADD A SHARE IN A STOCK WE DO NOT HAVE IN OUR PORTFOLIO
