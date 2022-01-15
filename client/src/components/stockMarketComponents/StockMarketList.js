@@ -5,9 +5,14 @@ const StockMarketList = ({stocks}) => {
 
     console.log("StockMarketList", stocks);
 
-    const stockItems = stocks.map((stock, index) => {
-        return <StockMarketItem stock={stock} index={index} key={index}/>
-    });
+    let stockItems
+
+    if (stocks) {
+        stockItems = stocks.map((stock, index) => {
+            return <StockMarketItem stock={stock} index={index} key={index}/>
+        });
+    };
+
 
     return (
         <>
