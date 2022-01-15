@@ -16,36 +16,36 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     return (  
 
         <>
-            <td>
-                <tr>
+            <tr>
+                <td>
                     {heldShare.symbol}
-                </tr>
-                <tr>
+                </td>
+                <td>
                     {heldShare.name}
-                </tr>
-                <tr>
+                </td>
+                <td>
                     {heldShare.numberOfStocks}
-                </tr>
-                <tr>
+                </td>
+                <td>
                     {heldShare.avgPurchasePrice}
-                </tr>
-                <tr>
+                </td>
+                <td>
                     CurrentSharePrice
-                </tr>
-                <tr>
+                </td>
+                <td>
                     {heldShare.numberOfStocks}*{heldShare.avgPurchasePrice}
-                </tr>
-                <tr>
+                </td>
+                <td>
                     Current Value of All Shares
-                </tr>
-                <tr>
+                </td>
+                <td>
                     P/L £ / %
-                </tr>
-                <tr>Edit....</tr>
-                <tr>
+                </td>
+                <td>Edit....</td>
+                <td>
                     <button onClick={handleDelete}>🗑</button>  
-                </tr>
-            </td>
+                </td>
+            </tr>
         </>
 
 
