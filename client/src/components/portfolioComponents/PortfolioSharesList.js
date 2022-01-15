@@ -1,4 +1,4 @@
-
+import PortfolioSharesItem from "./PortfolioSharesItem";
 
 const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany}) => {
 
@@ -12,6 +12,38 @@ const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany}) => {
 
         <>
             <table>
+            <tr>
+                <th>
+                    Symbol
+                </th>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                   Shares Held 
+                </th>
+                <th>
+                    Avg. Purchase Price
+                </th>
+                <th>
+                    Current Share Price
+                </th>
+                <th>
+                    Total Purchase Price
+                </th>
+                <th>
+                    Current Total Value
+                </th>
+                <th>
+                    P/L
+                </th>
+                <th>
+                  Edit  
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
                 {portfolioSharesItems}
             </table>
         </>
