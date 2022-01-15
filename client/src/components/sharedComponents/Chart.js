@@ -11,7 +11,7 @@ const Chart = ({sharesData}) => {
             type: 'pie'
         },
         title: {
-            text:'% of total portfolio value by company'
+            text:'Portfolio Distribution'
         },
         tooltip: {
             pointFormat: 'Value: <b>$ {point.y}</b>, Shares: {point.shares}'

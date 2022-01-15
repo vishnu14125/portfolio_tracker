@@ -46,7 +46,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                 </td>
                 <td>Edit....</td>
                 <td>
-                    <button onClick={handleDelete}>🗑</button>  
+                    <button onClick={handleDelete} class="btn btn-danger"><i className="bi bi-trash-fill"> Delete</i></button>  
                 </td>
             </tr>
         </>
