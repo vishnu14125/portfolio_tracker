@@ -11,9 +11,9 @@ const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany}) => {
     return ( 
 
         <>
-            <ul>
+            <table>
                 {portfolioSharesItems}
-            </ul>
+            </table>
         </>
 
      );
