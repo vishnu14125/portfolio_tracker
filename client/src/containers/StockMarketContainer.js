@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+//Dummy code to allow for router development - to be deleted when merged with develop branch
 
 const StockMarketContainer = () => {
 
@@ -8,3 +8,5 @@ const StockMarketContainer = () => {
 }
 
 export default StockMarketContainer;
+
+//Dummy code to allow for router development - to be deleted when merged with develop branch
