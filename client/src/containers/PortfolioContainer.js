@@ -31,7 +31,7 @@ const PortfolioContainer = () => {
     return (  
 
         <>
-            <p>Portfolio Container</p>
+        <hr/>
             <PortfolioSharesList heldShares={heldShares} removeHeldSharesInCompany={removeHeldSharesInCompany} />
             <Chart sharesData={heldShares} />
         </>
