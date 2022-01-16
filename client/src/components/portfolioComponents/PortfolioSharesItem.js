@@ -1,10 +1,12 @@
-import { Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
+
 import {AiFillFileAdd} from "react-icons/ai"
 import {HiDocumentRemove} from "react-icons/hi"
 import {BsFillTrashFill} from "react-icons/bs"
+import {ImArrowUpRight2} from "react-icons/im"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
+
 
 const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     
@@ -31,8 +33,20 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     }
    
 
+    const calculateTotal = (number, value) => number * value
+    let totalPaidPrice = calculateTotal(heldShare.numberOfShares,heldShare.avgPurchasePrice).toFixed(2)
+    let totalValue = calculateTotal(heldShare.numberOfShares, heldShare.currentPrice).toFixed(2)
 
-   
+    const differencePurchaseCurrentValueNum = (purchase, current) => (current - purchase).toFixed(2)
+    const differencePurchaseCurrentValuePrc = (purchase, current) => {
+        const result = (((current-purchase)/purchase)*100).toFixed(2)
+        return result
+    }
+
+    let profitOrLossTotal = differencePurchaseCurrentValueNum(totalPaidPrice, totalValue)
+    let profitOrLossPrc = differencePurchaseCurrentValuePrc(totalPaidPrice, totalValue)
+
+
     return (  
 
         <>
@@ -47,19 +61,20 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     {heldShare.numberOfShares}
                 </td>
                 <td>
-                    {heldShare.avgPurchasePrice}
+                    ${heldShare.avgPurchasePrice}
                 </td>
                 <td>
-                    {heldShare.currentPrice}
+                    ${heldShare.currentPrice}
                 </td>
                 <td>
-                    { (heldShare.numberOfShares * heldShare.avgPurchasePrice).toFixed(2) }
+                    ${totalPaidPrice}
                 </td>
                 <td>
-                    { (heldShare.numberOfShares * heldShare.currentPrice).toFixed(2) }
+                    ${totalValue}
                 </td>
-                <td>
-                    P/L £ / %
+                <td style={{color: Number(profitOrLossTotal) >= 0 ? "green" : "red"}}>
+                 ${profitOrLossTotal} ({profitOrLossPrc}%)
+                     
                 </td>
                 <td>
                 <Button variant="success" onClick={handleShowAddMoreHeldShares}>
