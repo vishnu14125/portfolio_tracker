@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import StockMarketList from '../components/stockMarketComponents/StockMarketList';
 import StockMarketSearch from '../components/stockMarketComponents/StockMarketSearch';
 import StockItemDetails from '../components/stockMarketComponents/StockItemDetails';
+import {Row, Col} from "react-bootstrap";
 
 const StockMarketContainer = ({stocks}) => {
 
@@ -14,10 +15,21 @@ const StockMarketContainer = ({stocks}) => {
 
     return (
         <>
-            <h1>StockMarketContainer</h1>
-            <StockMarketSearch stocks={stocks} handleSearchedStock={handleSearchedStock}/>
-            {searchedStockSymbol ? <StockItemDetails symbol={searchedStockSymbol}/> : null}
-            <StockMarketList stocks={stocks}/>
+            <div>
+                <Row>
+                    <Col>
+                    <StockMarketSearch stocks={stocks} handleSearchedStock={handleSearchedStock}/>
+                    </Col>
+                </Row>
+                <Row>
+                    {searchedStockSymbol ? <Col><StockItemDetails symbol={searchedStockSymbol}/></Col> : null}
+                </Row>
+                <Row>
+                    <Col>
+                        <StockMarketList stocks={stocks}/>
+                    </Col>
+                </Row>
+            </div>
         </>
     )
 }
