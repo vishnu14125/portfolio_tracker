@@ -13,7 +13,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     const handleDelete = () => {
         deleteShares(heldShare._id) //Delete from DB
         .then(() => {
-            removeHeldSharesInCompany(heldShare.id) //Update State
+            removeHeldSharesInCompany(heldShare._id) //Update State
         })
         handleClose()
     }
@@ -59,11 +59,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                 <Button variant="danger" onClick={handleShow}>
                 <i className="bi bi-trash-fill"> Delete</i>
                 </Button>
-                </td>
-            </tr>
-
-
-            <Modal
+                <Modal
             show={show}
             onHide={handleClose}
             backdrop="static"
@@ -85,6 +81,12 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+                </td>
+            </tr>
+
+
+            
 
         </>
         
