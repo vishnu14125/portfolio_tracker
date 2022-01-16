@@ -25,7 +25,7 @@ const MasterContainer = () => {
       <Router>
         <NavBar />
         <Routes>
-          <Route exact path='/' element={<PortfolioContainer />} />
+          <Route exact path='/' element={<PortfolioContainer apiData={apiData}/>} />
           <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData}/>} />
         </Routes>
       </Router>

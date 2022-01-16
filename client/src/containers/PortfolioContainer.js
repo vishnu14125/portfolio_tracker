@@ -4,14 +4,31 @@ import { deleteShares, getHeldShares, postNewShareAdd } from "../services/Portfo
 import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
 import Chart from '../components/sharedComponents/Chart';
 
-const PortfolioContainer = () => {
+const PortfolioContainer = ({apiData}) => {
 
     const [heldShares, setHeldShares] = useState([]);
+    const [sharesWithPrice, setSharesWithPrice] = useState([]);
 
     useEffect(() => {
         getHeldShares()
         .then(shares => setHeldShares(shares))
     }, [])
+
+    useEffect(() => {
+        const portfolioCurrentPrices =
+            heldShares.map((company) => {
+            return (
+                {
+                ...company,
+                currentPrice: apiData.filter(stock => stock.symbol === company.symbol)
+                                .map((stock) => {
+                                        return stock.price
+                                    })[0]
+                }
+            )
+            })        
+        setSharesWithPrice(portfolioCurrentPrices)
+    }, [heldShares, apiData])
 
 
     //REMOVE ALL SHARES IN A PARTICULAR COMPANY
@@ -33,7 +50,7 @@ const PortfolioContainer = () => {
         <>
         <hr/>
             <PortfolioSharesList heldShares={heldShares} removeHeldSharesInCompany={removeHeldSharesInCompany} />
-            <Chart sharesData={heldShares} />
+            <Chart sharesData={sharesWithPrice} />
         </>
 
     );
