@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 // import {getStockItemDetails} from '../../services/ApiServices';
 import {apikey} from '../../services/apikey';
 import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
+import {Accordion, Card, Row, Col} from "react-bootstrap";
 
 const StockItemDetails = ({symbol}) => {
 
@@ -23,35 +24,54 @@ const StockItemDetails = ({symbol}) => {
         // .then(data => data.json())
         // // data.historical - an array of 2 objects
         // .then(data => setStockPrices(data.historical))
-    },[]);
+    },[symbol]);
 
 
     return (
         <> 
         {stockDetails && stockPrices ? 
         <div>
-            <br></br>
-            <img src={stockDetails.image}></img>
-            <h3><b>{stockDetails.companyName}</b></h3>
-            <li><b>Symbol: </b>{stockDetails.symbol}</li>
+        <br></br>
 
-            <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
+        <Card border="primary" style={{ width: '90%', margin:'auto'}}>
+            <Card.Header><h3><b>{stockDetails.companyName}</b></h3></Card.Header>
+            <Card.Body>
+                <Row>
+                    <Col xs={3}>
+                    <img src={stockDetails.image}></img>
+                    </Col>
+                    <Col>
+                    <li><b>Symbol: </b>{stockDetails.symbol}</li>
 
-            {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
-                <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</li> :
-                <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>}
-            
-            <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
-            <li><b>Sector: </b>{stockDetails.sector}</li>
-            <li><b>Industry: </b>{stockDetails.industry}</li>
-            <li><b>Website: </b>{stockDetails.website}</li>
-            <li><b>Description: </b>{stockDetails.description}</li>
+                    <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
 
+                    {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
+                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</li> :
+                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>}
+                    
+                    <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
+                    <li><b>Sector: </b>{stockDetails.sector}</li>
+                    <li><b>Industry: </b>{stockDetails.industry}</li>
+                    <li><b>Website: </b>{stockDetails.website}</li>
 
-            <li><b>Ceo: </b>{stockDetails.ceo}</li>
-            <li><b>Country: </b>{stockDetails.country}</li>
-            <li><b>Currency: </b>{stockDetails.currency}</li>
-            <br></br>
+                    <Accordion>
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header style={{ height: '2%' }}><b>Description: </b></Accordion.Header>
+                        <Accordion.Body>
+                        {stockDetails.description}
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    </Accordion>
+
+                    <li><b>Ceo: </b>{stockDetails.ceo}</li>
+                    <li><b>Country: </b>{stockDetails.country}</li>
+                    <li><b>Currency: </b>{stockDetails.currency}</li>
+                    <br></br>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
+
         </div>
         : null}
         </>
@@ -59,3 +79,39 @@ const StockItemDetails = ({symbol}) => {
 };
 
 export default StockItemDetails;
+
+
+
+
+//////////////////////////////////
+
+// return (
+//     <> 
+//     {stockDetails && stockPrices ? 
+//     <div>
+//         <br></br>
+//         <img src={stockDetails.image}></img>
+//         <h3><b>{stockDetails.companyName}</b></h3>
+//         <li><b>Symbol: </b>{stockDetails.symbol}</li>
+
+//         <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
+
+//         {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
+//             <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</li> :
+//             <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>}
+        
+//         <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
+//         <li><b>Sector: </b>{stockDetails.sector}</li>
+//         <li><b>Industry: </b>{stockDetails.industry}</li>
+//         <li><b>Website: </b>{stockDetails.website}</li>
+//         <li><b>Description: </b>{stockDetails.description}</li>
+
+
+//         <li><b>Ceo: </b>{stockDetails.ceo}</li>
+//         <li><b>Country: </b>{stockDetails.country}</li>
+//         <li><b>Currency: </b>{stockDetails.currency}</li>
+//         <br></br>
+//     </div>
+//     : null}
+//     </>
+// );

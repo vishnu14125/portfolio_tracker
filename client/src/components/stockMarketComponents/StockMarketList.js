@@ -15,12 +15,23 @@ const StockMarketList = ({stocks}) => {
 
 
     return (
-        <>
-            <h3>StockMarketList</h3>
-            <ul>
-                {stockItems}
-            </ul>
-        </>
+        <div>
+            <table className="table table-striped table-hover table-responsive-md">
+            <thead className="table-dark" >
+            <tr>
+                <th>Symbol</th>
+                <th>Company name</th>
+                <th>Average share price</th>
+                <th>Sector</th>
+                <th>Industry</th>
+                <th>Country</th>
+            </tr>
+            </thead>
+                <tbody>
+                    {stockItems}
+                </tbody>
+            </table>
+        </div>
     );
 };
 
