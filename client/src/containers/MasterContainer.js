@@ -8,14 +8,14 @@ import StockMarketContainer from './StockMarketContainer';
 import PortfolioContainer from "./PortfolioContainer";
 
 
-import fetchedData from '../components/stockMarketComponents/fetchedData';
+import {fetchedData} from '../components/stockMarketComponents/fetchedData';
 
 const MasterContainer = () => {
     const [apiData, setApiData] = useState(fetchedData);
+    // const [apiData, setApiData] = useState(null);
 
     useEffect(() => {
       // getCurrentStocks()
-      // .then(data => console.log(JSON.stringify(data)))
       // .then(data => setApiData(data))
     },[])
   
