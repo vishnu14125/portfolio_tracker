@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     
     return (
-        <nav>
+        <nav className="navbar navbar-dark bg-dark">
             {/* <Link to="/">Dashboard</Link> If added, must amend route for Discover*/}
             <Link to="/">Portfolio</Link>
             <Link to="/stockmarket">Discover</Link>
