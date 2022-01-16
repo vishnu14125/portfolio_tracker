@@ -17,7 +17,9 @@ const StockMarketList = ({stocks}) => {
     return (
         <>
             <h3>StockMarketList</h3>
-            {stockItems}
+            <ul>
+                {stockItems}
+            </ul>
         </>
     );
 };
