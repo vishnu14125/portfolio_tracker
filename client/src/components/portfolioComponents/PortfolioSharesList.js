@@ -24,7 +24,6 @@ const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany}) => {
                 <th>Total Value</th>
                 <th>P/L</th>
                 <th>Edit</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
