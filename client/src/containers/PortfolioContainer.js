@@ -49,7 +49,7 @@ const PortfolioContainer = ({apiData}) => {
 
         <>
         <hr/>
-            <PortfolioSharesList heldShares={heldShares} removeHeldSharesInCompany={removeHeldSharesInCompany} />
+            <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} />
             <Chart sharesData={sharesWithPrice} />
         </>
 

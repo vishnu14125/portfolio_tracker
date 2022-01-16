@@ -17,11 +17,6 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
         })
         handleClose()
     }
-    
-    const calculateTotalPurchasePrice = (number, avgPrice) => number * avgPrice
-    
-    
-   let totalPurchasePrice = calculateTotalPurchasePrice(heldShare.numberOfShares, heldShare.avgPurchasePrice).toFixed(2)
    
 
 
@@ -43,13 +38,13 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     {heldShare.avgPurchasePrice}
                 </td>
                 <td>
-                    CurrentSharePrice
+                    {heldShare.currentPrice}
                 </td>
                 <td>
-                    {totalPurchasePrice}
+                    { (heldShare.numberOfShares * heldShare.avgPurchasePrice).toFixed(2) }
                 </td>
                 <td>
-                    Current Value of All Shares
+                    { (heldShare.numberOfShares * heldShare.currentPrice).toFixed(2) }
                 </td>
                 <td>
                     P/L £ / %
