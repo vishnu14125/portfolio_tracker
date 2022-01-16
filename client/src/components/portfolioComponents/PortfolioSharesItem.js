@@ -1,13 +1,25 @@
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import {AiFillFileAdd} from "react-icons/ai"
+import {HiDocumentRemove} from "react-icons/hi"
+import {BsFillTrashFill} from "react-icons/bs"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
 
 const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [showAddMoreHeldShares, setShowAddMoreHeldShares] = useState(false);
+    const [showRemoveSomeHeldShares, setShowRemoveSomeHeldShares] = useState(false);
+
+    const handleShowDelete = () => setShowDelete(true);
+    const handleCloseDelete = () => setShowDelete(false);
+
+    const handleShowAddMoreHeldShares = () => setShowAddMoreHeldShares(true);
+    const handleCloseAddMoreHeldShares = () => setShowAddMoreHeldShares(false);
+
+    const handleShowRemoveSomeHeldShares = () => setShowRemoveSomeHeldShares(true);
+    const handleCloseRemoveSomeHeldShares = () => setShowRemoveSomeHeldShares(false);
     
 
     const handleDelete = () => {
@@ -15,7 +27,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
         .then(() => {
             removeHeldSharesInCompany(heldShare._id) //Update State
         })
-        handleClose()
+        handleCloseDelete()
     }
     
     const calculateTotalPurchasePrice = (number, avgPrice) => number * avgPrice
@@ -55,20 +67,26 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     P/L £ / %
                 </td>
                 <td>
-                <Button variant="danger" onClick={handleShow}>
-                <i className="bi bi-trash-fill"> Delete</i>
+                <Button variant="success" onClick={handleShowAddMoreHeldShares}>
+                 <AiFillFileAdd />
                 </Button>
-                <Button variant="danger" onClick={handleShow}>
-                <i className="bi bi-trash-fill"> Delete</i>
+                <Button variant="warning" onClick={handleShowRemoveSomeHeldShares}>
+                <HiDocumentRemove />
+                </Button>
+                <Button variant="danger" onClick={handleShowDelete}>
+                 <BsFillTrashFill/>
                 </Button>
                 </td>
-                <td>
-                <Button variant="danger" onClick={handleShow}>
-                <i className="bi bi-trash-fill"> Delete</i>
-                </Button>
-                <Modal
-            show={show}
-            onHide={handleClose}
+                
+            </tr>
+
+
+
+{/* -----------------------MODALS-------------------- */}
+{/* ------------------------DELETE ALL SHARES IN A COMPANY--------------- */}
+            <Modal
+            show={showDelete}
+            onHide={handleCloseDelete}
             backdrop="static"
             keyboard={false}>
 
@@ -80,7 +98,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleCloseDelete}>
                         Cancel
                     </Button>
                     <Button onClick={handleDelete} variant="danger">
@@ -89,11 +107,67 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                 </Modal.Footer>
             </Modal>
 
-                </td>
-            </tr>
+
+{/* ----------------------------ADD MORE SHARES IN A HELD STOCK---------------- */}
+
+        <Modal
+            show={showAddMoreHeldShares}
+            onHide={handleCloseAddMoreHeldShares}
+            backdrop="static"
+            keyboard={false}>
+
+                <Modal.Header closeButton>
+                    <Modal.Title>Add More Shares in {heldShare.symbol}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Current Number of Shares: {heldShare.numberOfShares}
+                    Number of Shares
+                    Total Price Paid
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseAddMoreHeldShares}>
+                        Cancel
+                    </Button>
+                    <Button variant="success">
+                        Add
+                    </Button>
+                </Modal.Footer>
+            </Modal>    
 
 
-            
+
+{/* --------------------------------REMOVE SHARES IN A HELD STOCK----------- */}
+
+
+
+            <Modal
+            show={showRemoveSomeHeldShares}
+            onHide={handleCloseRemoveSomeHeldShares}
+            backdrop="static"
+            keyboard={false}>
+
+                <Modal.Header closeButton>
+                    <Modal.Title>Remove Shares in {heldShare.symbol}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Current Number of Shares: {heldShare.numberOfShares}</p>
+                    <p>How Many Shares Would You Like to Remove?</p>
+                    <p>....</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseRemoveSomeHeldShares}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger">
+                        Remove
+                    </Button>
+                </Modal.Footer>
+            </Modal>    
+
+
+
 
         </>
         
