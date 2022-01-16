@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {getCurrentStocks} from '../services/ApiServices';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import Header from "../components/sharedComponents/Header";
+import NavBar from "../components/sharedComponents/NavBar";
 import StockMarketContainer from './StockMarketContainer';
 import PortfolioContainer from "./PortfolioContainer";
 
