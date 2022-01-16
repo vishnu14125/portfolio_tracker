@@ -1,10 +1,13 @@
-import { Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
+
 import {AiFillFileAdd} from "react-icons/ai"
 import {HiDocumentRemove} from "react-icons/hi"
 import {BsFillTrashFill} from "react-icons/bs"
+import {ImArrowUpRight2} from "react-icons/im"
+import {ImArrowDownRight2} from "react-icons/im"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
+
 
 const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     
@@ -31,8 +34,20 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     }
    
 
+    const calculateTotal = (number, value) => number * value
+    let totalPaidPrice = calculateTotal(heldShare.numberOfShares,heldShare.avgPurchasePrice).toFixed(2)
+    let totalValue = calculateTotal(heldShare.numberOfShares, heldShare.currentPrice).toFixed(2)
 
-   
+    const differencePurchaseCurrentValueNum = (purchase, current) => (current - purchase).toFixed(2)
+    const differencePurchaseCurrentValuePrc = (purchase, current) => {
+        const result = (((current-purchase)/purchase)*100).toFixed(2)
+        return result
+    }
+
+    let profitOrLossTotal = differencePurchaseCurrentValueNum(totalPaidPrice, totalValue)
+    let profitOrLossPrc = differencePurchaseCurrentValuePrc(totalPaidPrice, totalValue)
+
+
     return (  
 
         <>
@@ -47,19 +62,20 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     {heldShare.numberOfShares}
                 </td>
                 <td>
-                    {heldShare.avgPurchasePrice}
+                    ${heldShare.avgPurchasePrice}
                 </td>
                 <td>
-                    {heldShare.currentPrice}
+                    ${heldShare.currentPrice}
                 </td>
                 <td>
-                    { (heldShare.numberOfShares * heldShare.avgPurchasePrice).toFixed(2) }
+                    ${totalPaidPrice}
                 </td>
                 <td>
-                    { (heldShare.numberOfShares * heldShare.currentPrice).toFixed(2) }
+                    ${totalValue}
                 </td>
-                <td>
-                    P/L £ / %
+                <td style={{color: Number(profitOrLossTotal) >= 0 ? "green" : "red"}}>
+                 {Number(profitOrLossTotal) >= 0 ? <ImArrowUpRight2 /> : <ImArrowDownRight2 />} ${profitOrLossTotal} ({profitOrLossPrc}%)
+                     
                 </td>
                 <td>
                 <Button variant="success" onClick={handleShowAddMoreHeldShares}>
@@ -115,16 +131,32 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     <Modal.Title>Add More Shares in {heldShare.symbol}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Current Number of Shares: {heldShare.numberOfShares}
-                    Number of Shares
-                    Total Price Paid
+
+                <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Number of Shares Purchased</Form.Label>
+                        <Form.Control type="number" placeholder="Number of Shares" step="1" min="0" defaultValue="0"/>
+                        <Form.Text className="text-muted">
+                        Current Number of Shares: {heldShare.numberOfShares}
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label>Price Paid Per Share</Form.Label>
+                        <Form.Control type="number"  defaultValue={heldShare.currentPrice} step="0.01" min="0" />
+                        <Form.Text className="text-muted">
+                        <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.<br></br><br></br>
+                        Current Average Price Paid: {heldShare.avgPurchasePrice}</p>
+                        </Form.Text>
+                    </Form.Group>
+                </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseAddMoreHeldShares}>
                         Cancel
                     </Button>
-                    <Button variant="success">
+                    <Button variant="success" type="submit">
                         Add
                     </Button>
                 </Modal.Footer>
@@ -146,16 +178,25 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                     <Modal.Title>Remove Shares in {heldShare.symbol}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
+                <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Number of Shares to Remove</Form.Label>
+                        <Form.Control type="number" placeholder="Number" step="1" min="0" max={heldShare.numberOfShares}  defaultValue="0" />
+                        <Form.Text className="text-muted">
+                        Fractional Shares Are Not Allowed
+                        </Form.Text>
+                    </Form.Group>
+                </Form>
+
                     <p>Current Number of Shares: {heldShare.numberOfShares}</p>
-                    <p>How Many Shares Would You Like to Remove?</p>
-                    <p>....</p>
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseRemoveSomeHeldShares}>
                         Cancel
                     </Button>
-                    <Button variant="danger">
+                    <Button variant="danger" type="submit">
                         Remove
                     </Button>
                 </Modal.Footer>

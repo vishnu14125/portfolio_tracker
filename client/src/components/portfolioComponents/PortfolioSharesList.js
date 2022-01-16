@@ -14,10 +14,9 @@ const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany}) => {
             <table className="table table-striped table-hover table-responsive">
             <thead className="table-dark" >
             <tr>
-                <th>Company</th>
+                <th>Symbol</th>
                 <th>Name</th>
-                <th># Shares
-                </th>
+                <th># Shares</th>
                 <th>Avg. Price</th>
                 <th>Current Price</th>
                 <th>Total Paid Price</th>
