@@ -33,26 +33,26 @@ const StockItemDetails = ({symbol}) => {
         <div>
         <br></br>
 
-        <Card border="primary" style={{ width: '90%', margin:'auto'}}>
-            <Card.Header><h3><b>{stockDetails.companyName}</b></h3></Card.Header>
+        <Card border="primary" style={{width:'90%', margin:'auto'}}>
+            <Card.Header style={{textAlign:'center'}}><h3><b>{stockDetails.companyName}</b></h3></Card.Header>
             <Card.Body>
                 <Row>
                     <Col xs={3}>
-                    <img src={stockDetails.image}></img>
+                    <img src={stockDetails.image} style={{width:'70%', margin:'auto'}}></img>
                     </Col>
                     <Col>
-                    <li><b>Symbol: </b>{stockDetails.symbol}</li>
+                    <tr><b>Symbol: </b>{stockDetails.symbol}</tr>
 
-                    <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
+                    <tr><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</tr>
 
                     {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
-                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</li> :
-                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>}
+                        <tr style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</tr> :
+                        <tr style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </tr>}
                     
-                    <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
-                    <li><b>Sector: </b>{stockDetails.sector}</li>
-                    <li><b>Industry: </b>{stockDetails.industry}</li>
-                    <li><b>Website: </b>{stockDetails.website}</li>
+                    <tr><b>Last dividend: </b>{stockDetails.lastDiv}</tr>
+                    <tr><b>Sector: </b>{stockDetails.sector}</tr>
+                    <tr><b>Industry: </b>{stockDetails.industry}</tr>
+                    <tr><b>Website: </b><a href={stockDetails.website}>{stockDetails.website}</a></tr>
 
                     <Accordion>
                     <Accordion.Item eventKey="0">
@@ -63,14 +63,14 @@ const StockItemDetails = ({symbol}) => {
                     </Accordion.Item>
                     </Accordion>
 
-                    <li><b>Ceo: </b>{stockDetails.ceo}</li>
-                    <li><b>Country: </b>{stockDetails.country}</li>
-                    <li><b>Currency: </b>{stockDetails.currency}</li>
-                    <br></br>
+                    <tr><b>Ceo: </b>{stockDetails.ceo}</tr>
+                    <tr><b>Country: </b>{stockDetails.country}</tr>
+                    <tr><b>Currency: </b>{stockDetails.currency}</tr>
                     </Col>
                 </Row>
             </Card.Body>
         </Card>
+        <br></br>
 
         </div>
         : null}
@@ -79,39 +79,3 @@ const StockItemDetails = ({symbol}) => {
 };
 
 export default StockItemDetails;
-
-
-
-
-//////////////////////////////////
-
-// return (
-//     <> 
-//     {stockDetails && stockPrices ? 
-//     <div>
-//         <br></br>
-//         <img src={stockDetails.image}></img>
-//         <h3><b>{stockDetails.companyName}</b></h3>
-//         <li><b>Symbol: </b>{stockDetails.symbol}</li>
-
-//         <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
-
-//         {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
-//             <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲</li> :
-//             <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>}
-        
-//         <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
-//         <li><b>Sector: </b>{stockDetails.sector}</li>
-//         <li><b>Industry: </b>{stockDetails.industry}</li>
-//         <li><b>Website: </b>{stockDetails.website}</li>
-//         <li><b>Description: </b>{stockDetails.description}</li>
-
-
-//         <li><b>Ceo: </b>{stockDetails.ceo}</li>
-//         <li><b>Country: </b>{stockDetails.country}</li>
-//         <li><b>Currency: </b>{stockDetails.currency}</li>
-//         <br></br>
-//     </div>
-//     : null}
-//     </>
-// );
