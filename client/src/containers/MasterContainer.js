@@ -7,17 +7,23 @@ import NavBar from "../components/sharedComponents/NavBar";
 import StockMarketContainer from './StockMarketContainer';
 import PortfolioContainer from "./PortfolioContainer";
 
-
 import {fetchedData} from '../components/stockMarketComponents/fetchedData';
+
 
 const MasterContainer = () => {
     const [apiData, setApiData] = useState(fetchedData);
     // const [apiData, setApiData] = useState(null);
+    const [historicalPrices, setHistoricalPrices] = useState(null);
+
 
     useEffect(() => {
       // getCurrentStocks()
       // .then(data => setApiData(data))
-    },[])
+    },[]);
+
+    const handleHistPrices = (histPricesObject) => {
+      setHistoricalPrices(histPricesObject)
+    };
   
     return (
     <>
@@ -26,7 +32,7 @@ const MasterContainer = () => {
         <NavBar />
         <Routes>
           <Route exact path='/' element={<PortfolioContainer apiData={apiData}/>} />
-          <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData}/>} />
+          <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>} />
         </Routes>
       </Router>
         

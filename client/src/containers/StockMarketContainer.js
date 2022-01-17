@@ -4,7 +4,7 @@ import StockMarketSearch from '../components/stockMarketComponents/StockMarketSe
 import StockItemDetails from '../components/stockMarketComponents/StockItemDetails';
 import {Row, Col} from "react-bootstrap";
 
-const StockMarketContainer = ({stocks}) => {
+const StockMarketContainer = ({stocks, handleHistPrices}) => {
 
     const [searchedStockSymbol, setSearchedStockSymbol] = useState(null);
 
@@ -22,7 +22,7 @@ const StockMarketContainer = ({stocks}) => {
                     </Col>
                 </Row>
                 <Row>
-                    {searchedStockSymbol ? <Col><StockItemDetails symbol={searchedStockSymbol}/></Col> : null}
+                    {searchedStockSymbol ? <Col><StockItemDetails symbol={searchedStockSymbol} handleHistPrices={handleHistPrices}/></Col> : null}
                 </Row>
                 <Row>
                     <Col>
