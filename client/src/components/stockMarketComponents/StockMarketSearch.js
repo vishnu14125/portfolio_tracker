@@ -38,16 +38,17 @@ const StockMarketSearch = ({stocks, handleSearchedStock}) => {
     });
 
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <label>
-            <input onChange={handleSearchChange} 
+            <input style={{width:'200px', margin:'10px'}} 
+                onChange={handleSearchChange} 
                 onKeyDown = {event => event.key == "Enter" ? handleEnter(event) : null}
                 list="browsers" name="browser" autoComplete="off" placeholder="Search by name or symbol"
             />
             </label>
-                <datalist id="browsers">
-                    {displayOptions}
-                </datalist>
+            <datalist id="browsers">
+                {displayOptions}
+            </datalist>
         </div>
     );
 };

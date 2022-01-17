@@ -31,8 +31,6 @@ const StockItemDetails = ({symbol}) => {
         <> 
         {stockDetails && stockPrices ? 
         <div>
-        <br></br>
-
         <Card border="primary" style={{width:'90%', margin:'auto'}}>
             <Card.Header style={{textAlign:'center'}}><h3><b>{stockDetails.companyName}</b></h3></Card.Header>
             <Card.Body>
