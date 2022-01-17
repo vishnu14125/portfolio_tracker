@@ -1,19 +1,19 @@
 import { Modal, Button, Form } from "react-bootstrap";
-
 import {AiFillFileAdd} from "react-icons/ai"
-import {HiDocumentRemove} from "react-icons/hi"
+import {HiDocumentRemove, HiOutlineDatabase} from "react-icons/hi"
 import {BsFillTrashFill} from "react-icons/bs"
 import {ImArrowUpRight2} from "react-icons/im"
 import {ImArrowDownRight2} from "react-icons/im"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
+import { editCurrentSharesDB } from "../../services/PortfolioServices";
 
-
-const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
+const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSharesInCompany }) => {
     
     const [showDelete, setShowDelete] = useState(false);
     const [showAddMoreHeldShares, setShowAddMoreHeldShares] = useState(false);
     const [showRemoveSomeHeldShares, setShowRemoveSomeHeldShares] = useState(false);
+    const [sharesToRemove, setSharesToRemove] = useState(0)
 
     const handleShowDelete = () => setShowDelete(true);
     const handleCloseDelete = () => setShowDelete(false);
@@ -24,6 +24,11 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
     const handleShowRemoveSomeHeldShares = () => setShowRemoveSomeHeldShares(true);
     const handleCloseRemoveSomeHeldShares = () => setShowRemoveSomeHeldShares(false);
     
+    const handleNumberOfSharesToRemove = event => setSharesToRemove(event.target.value)
+    
+    
+
+
 
     const handleDelete = () => {
         deleteShares(heldShare._id) //Delete from DB
@@ -33,6 +38,30 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
         handleCloseDelete()
     }
    
+
+    const handleRemove = () => {
+
+        const newNumShares = heldShare.numberOfShares - sharesToRemove
+        const shares = {
+            numberOfShares: newNumShares
+        }
+        if (newNumShares <= 0){
+            deleteShares(heldShare._id)
+            .then(() => {
+                removeHeldSharesInCompany(heldShare._id) //Update State
+            })
+        }else{
+            editCurrentSharesDB(heldShare._id, shares)
+            .then(() => {
+                removeSomeSharesInCompany(heldShare._id, newNumShares)
+            })
+        }
+        handleCloseRemoveSomeHeldShares()
+        setSharesToRemove(0)
+
+    }
+
+
 
     const calculateTotal = (number, value) => number * value
     let totalPaidPrice = calculateTotal(heldShare.numberOfShares,heldShare.avgPurchasePrice).toFixed(2)
@@ -46,6 +75,17 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
 
     let profitOrLossTotal = differencePurchaseCurrentValueNum(totalPaidPrice, totalValue)
     let profitOrLossPrc = differencePurchaseCurrentValuePrc(totalPaidPrice, totalValue)
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (  
@@ -137,7 +177,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                         <Form.Label>Number of Shares Purchased</Form.Label>
                         <Form.Control type="number" placeholder="Number of Shares" step="1" min="0" defaultValue="0"/>
                         <Form.Text className="text-muted">
-                        Current Number of Shares: {heldShare.numberOfShares}
+                        <p>Current Number of Shares: {heldShare.numberOfShares}</p>
                         </Form.Text>
                     </Form.Group>
 
@@ -146,7 +186,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                         <Form.Control type="number"  defaultValue={heldShare.currentPrice} step="0.01" min="0" />
                         <Form.Text className="text-muted">
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.<br></br><br></br>
-                        Current Average Price Paid: {heldShare.avgPurchasePrice}</p>
+                        Current Average Price Paid: ${heldShare.avgPurchasePrice}</p>
                         </Form.Text>
                     </Form.Group>
                 </Form>
@@ -182,21 +222,22 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany}) => {
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Number of Shares to Remove</Form.Label>
-                        <Form.Control type="number" placeholder="Number" step="1" min="0" max={heldShare.numberOfShares}  defaultValue="0" />
+                        <Form.Control  onChange={handleNumberOfSharesToRemove} type="number" placeholder="Number" step="1" min="0" max={heldShare.numberOfShares}  defaultValue="0" />
                         <Form.Text className="text-muted">
-                        Fractional Shares Are Not Allowed
+                        <p>Current Number of Shares: {heldShare.numberOfShares}</p>
+                        <p>Number of Shares After Removal: {heldShare.numberOfShares - sharesToRemove} </p>
                         </Form.Text>
                     </Form.Group>
                 </Form>
 
-                    <p>Current Number of Shares: {heldShare.numberOfShares}</p>
+                
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseRemoveSomeHeldShares}>
                         Cancel
                     </Button>
-                    <Button variant="danger" type="submit">
+                    <Button onClick={handleRemove} variant="danger" type="submit">
                         Remove
                     </Button>
                 </Modal.Footer>

@@ -3,6 +3,8 @@ import StockMarketList from '../components/stockMarketComponents/StockMarketList
 import StockMarketSearch from '../components/stockMarketComponents/StockMarketSearch';
 import StockItemDetails from '../components/stockMarketComponents/StockItemDetails';
 import {Row, Col} from "react-bootstrap";
+import './StockMarketContainer.css'
+
 
 const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
 
@@ -15,7 +17,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
 
     return (
         <>
-            <div>
+            <div className='stockmarket-container'>
                 <Row>
                     <Col>
                     <StockMarketSearch stocks={stocks} handleSearchedStock={handleSearchedStock}/>
