@@ -28,7 +28,7 @@ db.shares.insertMany([
         symbol: "GE",
         purchaseDate: "05/01/2022",
         numberOfShares: 10,
-        avgPurchasePrice: 87.34
+        avgPurchasePrice: 250.63 //changed so that negative PL is obvious for dev purposes
     },
     {
         name: "Uber Technologies, Inc",
