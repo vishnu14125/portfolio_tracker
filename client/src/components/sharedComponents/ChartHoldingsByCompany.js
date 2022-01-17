@@ -3,6 +3,15 @@ import HighchartsReact from 'highcharts-react-official';
 
 const ChartHoldingsByCompany = ({sharesData}) => {
     
+    const distributionData = sharesData.map((company) => {
+        return {
+            name: company.name,
+            symbol: company.symbol,
+            y: company.currentPrice * company.numberOfShares,
+            shares: company.numberOfShares
+        }
+    })
+    
     const options = {
         chart: {
             plotBackgroundColor: 'white',
@@ -34,19 +43,10 @@ const ChartHoldingsByCompany = ({sharesData}) => {
         series:[{
             name: 'Companies',
             colorByPoint: true,
-            data: []
+            data: distributionData
         }]
 
     }
-
-    options.series[0].data = sharesData.map((company) => {
-        return {
-            name: company.name,
-            symbol: company.symbol,
-            y: company.currentPrice * company.numberOfShares,
-            shares: company.numberOfShares
-        }
-    })
     
     return (
         <HighchartsReact highcharts={Highcharts} options={options} />
