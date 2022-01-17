@@ -9,6 +9,9 @@ const StockMarketList = ({stocks}) => {
 
     if (stocks) {
         stockItems = stocks.map((stock, index) => {
+            if (index > 100){
+                return
+            };
             return <StockMarketItem stock={stock} index={index} key={index}/>
         });
     };
