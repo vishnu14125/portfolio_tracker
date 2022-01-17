@@ -4,7 +4,7 @@ import { deleteShares, getHeldShares, postNewShareAdd } from "../services/Portfo
 import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
 import ChartHoldingsByCompany from "../components/sharedComponents/ChartHoldingsByCompany";
 import ColumnChartPortfolioPerformance from "../components/sharedComponents/ColumnChartPortfolioPerformance";
-
+import './PortfolioContainer.css'
 const PortfolioContainer = ({apiData}) => {
 
     const [heldShares, setHeldShares] = useState([]);
@@ -63,12 +63,11 @@ const PortfolioContainer = ({apiData}) => {
 
     return (  
 
-        <>
-        <hr/>
+        <div className="portfoliocontainer">
             <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany } />
             <ChartHoldingsByCompany sharesData={sharesWithPrice} />
             <ColumnChartPortfolioPerformance portfolioData={sharesWithPrice}/>
-        </>
+        </div>
 
     );
 }
