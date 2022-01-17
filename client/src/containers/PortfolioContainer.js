@@ -40,17 +40,32 @@ const PortfolioContainer = ({apiData}) => {
         setHeldShares(temp);
     }
 
+    //REMOVE SOME SHARES IN A PARTICULAR COMPANY
+
+    const removeSomeSharesInCompany = (id, updatedShareNumber) => {
+        const updatedHeldSharesIndex = heldShares.findIndex(heldShare => heldShare._id === id)
+        const updatedHeldShares = [...heldShares]
+        updatedHeldShares[updatedHeldSharesIndex].numberOfShares = updatedShareNumber
+        setHeldShares(updatedHeldShares)
+    }
+
     //ADD A SHARE IN A STOCK WE DO NOT HAVE IN OUR PORTFOLIO
     const addNewShares = (newShares) => {
         postNewShareAdd(newShares)
         .then(savedNewShares => setHeldShares([...heldShares, savedNewShares]))
     }
 
+    //ADD MORE SHARES TO CURRENT HOLDING IN PARTICULAR STOCK
+
+    const addAdditionalShares = (shares) => {
+        
+    }
+
     return (  
 
         <>
         <hr/>
-            <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} />
+            <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany } />
             <ChartHoldingsByCompany sharesData={sharesWithPrice} />
             <ColumnChartPortfolioPerformance portfolioData={sharesWithPrice}/>
         </>
