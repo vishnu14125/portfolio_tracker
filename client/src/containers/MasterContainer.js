@@ -24,6 +24,7 @@ const MasterContainer = () => {
     const handleHistPrices = (histPricesObject) => {
       setHistoricalPrices(histPricesObject)
     };
+    console.log(historicalPrices)
   
     return (
     <>
@@ -32,7 +33,7 @@ const MasterContainer = () => {
         <NavBar />
         <Routes>
           <Route exact path='/' element={<PortfolioContainer apiData={apiData}/>} />
-          <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>} />
+          <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices} historicalPrices={historicalPrices} />} />
         </Routes>
       </Router>
         
