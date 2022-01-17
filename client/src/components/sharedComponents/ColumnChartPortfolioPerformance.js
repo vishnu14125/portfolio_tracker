@@ -77,7 +77,9 @@ const ColumnChartPortfolioPerformance = ({ portfolioData, portfolioTotals }) => 
             },
             {
                 name: 'Profit/Loss',
-                data: holdingsPL
+                data: holdingsPL,
+                color: '#33FF57',
+                negativeColor: '#FF5733'
             },
         ]
     }
