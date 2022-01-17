@@ -19,18 +19,18 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
         // // data[0] - is an object
         // .then(data => setStockDetails(data[0]))
 
-        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?timeseries=23&apikey=${apikey}`
+        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?timeseries=63&apikey=${apikey}`
         // fetch(url2)
         // .then(data => data.json())
         // // data.historical - an array of 2 objects
         // .then(data => setStockPrices(data.historical))
         // .then(data => {
-            historic30dayPrice(stockPrices)
+            historicStockPrice(stockPrices)
         // })
     },[symbol]);
 
 
-    const historic30dayPrice = (stockClosePrices) => {
+    const historicStockPrice = (stockClosePrices) => {
         const hist30dayPrices = []
         const result = stockClosePrices.map((stockPrice) => {
             hist30dayPrices.push(stockPrice.close)
@@ -42,8 +42,8 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
         });
     };
 
-    let histPriceResultChange = (stockPrices[0].close - stockPrices[19].close)
-    let resultPercentage = (histPriceResultChange *100 / stockPrices[19].close)
+    let histPriceResultChange = (stockPrices[0].close - stockPrices[62].close)
+    let resultPercentage = (histPriceResultChange *100 / stockPrices[62].close)
 
     return (
         <> 
@@ -63,20 +63,14 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
                     <li><b>Symbol: </b>{stockDetails.symbol}</li>
                     <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
 
-                    {/* {stockPrices[0].open + stockPrices[0].change >= stockPrices[0].open ?
-                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
-                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
-                    } */}
-
-
                     {stockPrices[0].change >= 0 ?
                         <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
                         <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
                     }
 
                     {histPriceResultChange >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Price change since 30 days ago: </b> $ {histPriceResultChange.toFixed(2)} ({resultPercentage.toFixed(2)} %) ▲ </li> :
-                        <li style={{color:'red'}}><b>Price change since 30 days ago: </b> $ {histPriceResultChange.toFixed(2)} ({resultPercentage.toFixed(2)} %) ▼ </li>
+                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {histPriceResultChange.toFixed(2)} ({resultPercentage.toFixed(2)} %) ▲ </li> :
+                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {histPriceResultChange.toFixed(2)} ({resultPercentage.toFixed(2)} %) ▼ </li>
                     }
 
                     <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
