@@ -31,6 +31,9 @@ const ChartHoldingsByCompany = ({sharesData}) => {
                 }
             }
         },
+        credits: {
+            enabled: false
+        },
         series:[{
             name: 'Companies',
             colorByPoint: true,
