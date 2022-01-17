@@ -6,7 +6,21 @@ import { ImPriceTag } from 'react-icons/im';
 
 const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
 
-    const holdingsSymbols = ['Portfolio Total', ...portfolioData.map(holding => holding.symbol)];
+    // const holdingsSymbols = ['Portfolio Total', ...portfolioData.map(holding => holding.symbol)];
+    const holdingsNames = ['Portfolio Total', ...portfolioData.map(holding => holding.name)];
+
+    // const holdingsLabels = ['Portfolio Total', ...]
+
+    let labels = portfolioData.map((holding) => {
+        return (
+            `${holding.name}, (${holding.symbol})`
+        )
+    })
+    
+    labels = ['Portfolio Total', ...labels]
+    console.log(labels)
+
+
     
     let holdingsTotalPaid = portfolioData.map(holding => {
         return (Number((holding.avgPurchasePrice * holding.numberOfShares).toFixed(2)))      
@@ -64,7 +78,8 @@ const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
             }
         },
         xAxis: {
-            categories: holdingsSymbols           
+            categories: labels 
+
         },
         credits: {
             enabled: false
