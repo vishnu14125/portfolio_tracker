@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { deleteShares, getHeldShares, postNewShareAdd } from "../services/PortfolioServices";
 import PortfolioSharesList from "../components/portfolioComponents/PortfolioSharesList";
 import ChartHoldingsByCompany from "../components/sharedComponents/ChartHoldingsByCompany";
+import ColumnChartPortfolioPerformance from "../components/sharedComponents/ColumnChartPortfolioPerformance";
 
 const PortfolioContainer = ({apiData}) => {
 
@@ -51,6 +52,7 @@ const PortfolioContainer = ({apiData}) => {
         <hr/>
             <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} />
             <ChartHoldingsByCompany sharesData={sharesWithPrice} />
+            <ColumnChartPortfolioPerformance portfolioData={sharesWithPrice}/>
         </>
 
     );
