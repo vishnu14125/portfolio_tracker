@@ -1,5 +1,7 @@
+import { bottom } from '@popperjs/core';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { BsTextCenter } from 'react-icons/bs';
 import { ImPriceTag } from 'react-icons/im';
 
 const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
@@ -49,6 +51,17 @@ const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
         },
         tooltip: {
             pointFormat: '{point.series.name}: <b>$ {point.y: .2f}</b>'
+        },
+        plotOptions: {
+            column: {
+                dataLabels: {
+                    enabled: false, //this can be toggledd to turn labels on/off
+                    inside: true,
+                    rotation: 90,
+                    align: 'center',
+                    format: '{point.series.name}'
+                }
+            }
         },
         xAxis: {
             categories: holdingsSymbols           

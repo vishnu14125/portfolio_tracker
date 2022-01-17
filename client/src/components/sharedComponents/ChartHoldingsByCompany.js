@@ -23,7 +23,7 @@ const ChartHoldingsByCompany = ({sharesData}) => {
         },
         plotOptions: {
             pie: {
-                allowPointSelect: true,
+                allowPointSelect: false,
                 cursor: 'pointer',
                 dataLabels: {
                     enabled: true,
