@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { BsTextCenter } from 'react-icons/bs';
 import { ImPriceTag } from 'react-icons/im';
 
-const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
+const ColumnChartPortfolioPerformance = ({ portfolioData, portfolioTotals }) => {
 
     let labels = portfolioData.map((holding) => {
         return (
@@ -17,30 +17,23 @@ const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
     let holdingsTotalPaid = portfolioData.map(holding => {
         return (Number((holding.avgPurchasePrice * holding.numberOfShares).toFixed(2)))      
     })
-    
-    const portfolioTotalPaid = Number(holdingsTotalPaid.reduce((previous, current) => {
-        return (previous + current)
-    }, 0).toFixed(2))
         
     let holdingsTotalValue = portfolioData.map(holding => {
         return (Number((holding.currentPrice * holding.numberOfShares).toFixed(2)))
     })
-    
-    const portfolioTotalValue = Number(holdingsTotalValue.reduce((previous, current) => {
-        return (previous + current)
-    }, 0).toFixed(2))
-    
-    holdingsTotalPaid = [portfolioTotalPaid, ...holdingsTotalPaid]
-    holdingsTotalValue = [portfolioTotalValue, ...holdingsTotalValue]
 
     let holdingsPL = portfolioData.map(holding => {
         return (
             (holding.currentPrice * holding.numberOfShares) - (holding.avgPurchasePrice * holding.numberOfShares).toFixed(2)
         )
     })
-
-    const portfolioTotalPL = Number((portfolioTotalValue - portfolioTotalPaid).toFixed(2))
-
+    
+    const portfolioTotalPaid = portfolioTotals.paid
+    const portfolioTotalValue = portfolioTotals.value
+    const portfolioTotalPL = (portfolioTotalValue - portfolioTotalPaid)
+          
+    holdingsTotalPaid = [portfolioTotalPaid, ...holdingsTotalPaid]
+    holdingsTotalValue = [portfolioTotalValue, ...holdingsTotalValue]
     holdingsPL = [portfolioTotalPL, ...holdingsPL]
     
     const options = {
@@ -51,7 +44,7 @@ const ColumnChartPortfolioPerformance = ({ portfolioData }) => {
             type: 'column'
         },
         title: {
-            text: 'Current Portfolio performance snapshot'
+            text: 'Current Portfolio performance'
         },
         tooltip: {
             pointFormat: '{point.series.name}: <b>$ {point.y: .2f}</b>'
