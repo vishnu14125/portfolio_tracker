@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {apikey} from '../../services/apikey';
 import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Card, Row, Col} from "react-bootstrap";
+import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 
-const StockItemDetails = ({symbol, handleHistPrices}) => {
+const StockItemDetails = ({symbol, handleHistPrices, historicalPrices}) => {
 
     const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
     const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
@@ -90,6 +91,7 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
                     <li><b>Ceo: </b>{stockDetails.ceo}</li>
                     <li><b>Country: </b>{stockDetails.country}</li>
                     <li><b>Currency: </b>{stockDetails.currency}</li>
+                    <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
                     </ul>
                     </Col>
                 </Row>
