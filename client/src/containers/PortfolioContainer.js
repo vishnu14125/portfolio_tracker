@@ -79,14 +79,19 @@ const PortfolioContainer = ({apiData}) => {
 
     //ADD MORE SHARES TO CURRENT HOLDING IN PARTICULAR STOCK
 
-    const addAdditionalShares = (shares) => {
-        
+    const addSomeSharesInCompany = (id, numShares, avgPrice ) => {
+        const updatedHeldSharesIndex = heldShares.findIndex(heldShare => heldShare._id === id)
+        const updatedHeldShares = [...heldShares]
+        updatedHeldShares[updatedHeldSharesIndex].numberOfShares = numShares
+        updatedHeldShares[updatedHeldSharesIndex].avgPurchasePrice = avgPrice
+        setHeldShares(updatedHeldShares)
+
     }
 
     return (  
 
         <div className="portfoliocontainer">
-            <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany } />
+            <PortfolioSharesList heldShares={sharesWithPrice} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany} addSomeSharesInCompany={addSomeSharesInCompany} />
             <ChartHoldingsByCompany sharesData={sharesWithPrice} />
 
             <ColumnChartPortfolioPerformance portfolioData={sharesWithPrice} portfolioTotals={portfolioTotals}/>
