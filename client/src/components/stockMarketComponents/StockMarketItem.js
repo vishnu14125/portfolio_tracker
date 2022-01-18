@@ -8,22 +8,25 @@ const StockMarketItem = ({stock}) => {
     const [showAddPosition, setShowAddPosition] = useState(false)
     const [newNumShares, setNewNumShares] = useState(0)
     const [newPriceShares, setNewPriceShares] = useState(0)
-
+    const [date, setDate] = useState('')
     const handleShowAddPosition = () => setShowAddPosition(true)
     const handleCloseAddPosition = () => setShowAddPosition(false)
 
     const handleNewNumShares = event => setNewNumShares(event.target.value)
     const handleNewPriceShares = event => setNewPriceShares(event.target.value)
 
+    const handleDate = event => setDate(event.target.value)
 
 
+
+    const today = new Date()
+    const todaysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     const handleAddPositionSubmit = (event) => {
         event.preventDefault()
         const name = stock.companyName
         const symbol = stock.symbol
-        const today = new Date()
-        const purchaseDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+        const purchaseDate = date
         const numberOfShares = Number(newNumShares)
         const avgPurchasePrice = Number(newPriceShares)
 
@@ -38,6 +41,8 @@ const StockMarketItem = ({stock}) => {
         if (newNumShares <= 0){
             return
         }else if (newPriceShares <= 0){
+            return
+        }else if (purchaseDate == false){
             return
         }else{
         postNewShareAdd(shares)
@@ -96,6 +101,15 @@ const StockMarketItem = ({stock}) => {
                         <Form.Text className="text-muted">
                         <p>Current Market Value: ${stock.price}</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.</p>
+                        
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label>Purchase Date</Form.Label>
+                        <Form.Control onChange={handleDate} type="date"  />
+                        <Form.Text className="text-muted">
+                        <p>Date Purchased</p>
                         
                         </Form.Text>
                     </Form.Group>
