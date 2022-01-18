@@ -1,5 +1,6 @@
 import React from 'react';
 import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
+import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 
 const FavouriteStock = ({favourite}) => {
 
@@ -33,16 +34,16 @@ const FavouriteStock = ({favourite}) => {
 
                     <Accordion>
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header style={{ height: '2%' }}><b>Description: </b></Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Header><b>Description: </b></Accordion.Header>
+                        <Accordion.Body style={{height:'200px', overflowY:'scroll'}}>
                         {favourite.description}
                         </Accordion.Body>
                     </Accordion.Item>
                     </Accordion>
 
                     <li><b>Ceo: </b>{favourite.ceo}</li>
-                    <li><b>Country: </b>{favourite.country}</li>
-                    <li><b>Currency: </b>{favourite.currency}</li>
+                    <li><b>Country: </b>{favourite.country}, <b>Currency: </b>{favourite.currency}</li>
+                    {/* <li><ChartPriceHistory historicalPrices={favourite}/></li> */}
                     </ul>
                     </Col>
                 </Row>

@@ -105,16 +105,15 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
 
                     <Accordion>
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header style={{ height: '2%' }}><b>Description: </b></Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Header><b>Description: </b></Accordion.Header>
+                        <Accordion.Body style={{height:'200px', overflowY:'scroll'}}>
                         {stockDetails.description}
                         </Accordion.Body>
                     </Accordion.Item>
                     </Accordion>
 
                     <li><b>Ceo: </b>{stockDetails.ceo}</li>
-                    <li><b>Country: </b>{stockDetails.country}</li>
-                    <li><b>Currency: </b>{stockDetails.currency}</li>
+                    <li><b>Country: </b>{stockDetails.country}, <b>Currency: </b>{stockDetails.currency}</li>
                     <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
                     </ul>
                     </Col>
