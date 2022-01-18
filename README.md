@@ -1,5 +1,7 @@
 # Shares Portfolio Application
 
+Portfolio Tracker app allows a user to track their portfolio performance in real-time.
+#
 
 ## Project brief
 
@@ -26,5 +28,15 @@ A user should be able to:
 
 ## API, Libraries, Resources
 
-- https://www.alphavantage.co/ (Requires sign up)
+- https://financialmodelingprep.com/ (Requires an account)
 - https://www.highcharts.com/ HighCharts is an open-source library for rendering responsive charts.
+
+
+#
+## Project set up
+
+| Front-end (client) | Back-end (server)    |
+| :---               | :---                 |
+| `npm install`      | `npm install`        |
+| `npm start`        | `npm run seeds`      |
+|                    | `npm run server:dev` |
