@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form} from "react-bootstrap";
 import {AiFillFileAdd} from "react-icons/ai"
 import { postNewShareAdd } from "../../services/PortfolioServices";
 const StockMarketItem = ({stock}) => {
@@ -19,8 +19,6 @@ const StockMarketItem = ({stock}) => {
 
 
 
-    const today = new Date()
-    const todaysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     const handleAddPositionSubmit = (event) => {
         event.preventDefault()
