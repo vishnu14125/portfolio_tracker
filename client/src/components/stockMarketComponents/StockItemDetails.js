@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {apikey} from '../../services/apikey';
 import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
-import {Accordion, Card, Row, Col} from "react-bootstrap";
+import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
 
-const StockItemDetails = ({symbol, handleHistPrices}) => {
+const StockItemDetails = ({symbol, handleHistPrices, addToFavourites}) => {
 
     const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
     const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
@@ -42,6 +42,27 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
         });
     };
 
+    const handleAddToFavourites = () => {
+        const favourite = stockDetails
+        favourite.currentSharePrice = stockPrices[0].open + stockPrices[0].change
+         
+        {stockPrices[0].change >= 0 ?
+            favourite.currentDayChange =
+            <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
+            favourite.currentDayChange =
+            <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
+        };
+
+        {(stockPrices[0].close - stockPrices[62].close) >= 0 ?
+            favourite.change3Months =
+            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▲ </li> :
+            favourite.change3Months =
+            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▼ </li>
+        };
+        console.log("Before sending", favourite);
+        addToFavourites(favourite)
+    };
+
     // let histPriceResultChange = (stockPrices[0].close - stockPrices[62].close)
     // let resultPercentage = (histPriceResultChange *100 / stockPrices[62].close)
 
@@ -50,7 +71,10 @@ const StockItemDetails = ({symbol, handleHistPrices}) => {
         {stockDetails && stockPrices ? 
         <div>
         <Card border="primary" style={{width:'90%', margin:'auto'}}>
-            <Card.Header style={{textAlign:'center'}}><h3><b>{stockDetails.companyName}</b></h3></Card.Header>
+            <Card.Header><h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b></h3>
+            <Button variant="outline-primary" onClick={handleAddToFavourites}> ➕ </Button>
+            </Card.Header>
+
             <Card.Body>
                 <Row>
                     <Col xs={3}>
