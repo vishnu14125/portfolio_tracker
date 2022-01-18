@@ -71,8 +71,8 @@ const StockItemDetails = ({symbol, handleHistPrices, addToFavourites}) => {
         {stockDetails && stockPrices ? 
         <div>
         <Card border="primary" style={{width:'90%', margin:'auto'}}>
-            <Card.Header><h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b></h3>
-            <Button variant="outline-primary" onClick={handleAddToFavourites}> ➕ </Button>
+            <Card.Header><h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b>
+            <Button variant="outline-primary" onClick={handleAddToFavourites} style={{marginLeft:'5%'}}> ➕ </Button></h3>
             </Card.Header>
 
             <Card.Body>
