@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+// import React, {useEffect, useState} from 'react';
 // import {apikey} from '../../services/apikey';
 // import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
@@ -27,8 +27,8 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
         addToFavourites(favourite)
     };
 
-    // let histPriceResultChange = (stockPrices[0].close - stockPrices[64].close)
-    // let resultPercentage = (histPriceResultChange *100 / stockPrices[64].close)
+
+
 
     return (
         <> 
