@@ -91,7 +91,7 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices}) => {
                     <li><b>Ceo: </b>{stockDetails.ceo}</li>
                     <li><b>Country: </b>{stockDetails.country}</li>
                     <li><b>Currency: </b>{stockDetails.currency}</li>
-                    <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
+                    <li><ChartPriceHistory closePriceData={stockPrices}/></li>
                     </ul>
                     </Col>
                 </Row>

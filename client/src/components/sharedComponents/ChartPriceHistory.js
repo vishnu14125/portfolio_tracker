@@ -2,7 +2,7 @@ import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 
 
-const ChartPriceHistory = ({historicalPrices}) => {
+const ChartPriceHistory = ({closePriceData}) => {
     
     // console.log(historicalPrices)
 
@@ -12,7 +12,7 @@ const ChartPriceHistory = ({historicalPrices}) => {
     // const prices = historicalPrices.map(day => day.adjClose).reverse()
     // console.log(prices)
 
-    const datePrice = historicalPrices.map((day) => {
+    const datePrice = closePriceData.map((day) => {
         return ([
             Date.parse(day.date),
             day.adjClose
@@ -26,7 +26,7 @@ const ChartPriceHistory = ({historicalPrices}) => {
             borderWidth: 1
         },
         title: {
-            text: "Previous 3 months' close prices"
+            text: "Previous close prices"
         },
         tooltip: {
             pointFormat: 'Close price: <b>$ {point.y: .2f}</b>'
