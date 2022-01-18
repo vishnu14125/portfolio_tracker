@@ -947,6 +947,36 @@ const stockPrices = [
     "vwap": 145.51667,
     "label": "October 18, 21",
     "changeOverTime": 0.02161
+    },
+    {
+    "date": "2021-10-15",
+    "open": 143.770004,
+    "high": 144.899994,
+    "low": 143.509995,
+    "close": 144.839996,
+    "adjClose": 144.628922,
+    "volume": 67885200,
+    "unadjustedVolume": 67885200,
+    "change": 1.06999,
+    "changePercent": 0.744,
+    "vwap": 144.41666,
+    "label": "October 15, 21",
+    "changeOverTime": 0.00744
+    },
+    {
+    "date": "2021-10-14",
+    "open": 142.110001,
+    "high": 143.880005,
+    "low": 141.509995,
+    "close": 143.759995,
+    "adjClose": 143.550491,
+    "volume": 69907100,
+    "unadjustedVolume": 69907100,
+    "change": 1.64999,
+    "changePercent": 1.161,
+    "vwap": 143.05,
+    "label": "October 14, 21",
+    "changeOverTime": 0.01161
     }
     ]
 

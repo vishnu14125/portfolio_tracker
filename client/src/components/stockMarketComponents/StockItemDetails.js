@@ -17,18 +17,18 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
             <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
         };
 
-        {(stockPrices[0].close - stockPrices[62].close) >= 0 ?
+        {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
             favourite.change3Months =
-            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▲ </li> :
+            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
             favourite.change3Months =
-            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▼ </li>
+            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
         };
         console.log("Before sending", favourite);
         addToFavourites(favourite)
     };
 
-    // let histPriceResultChange = (stockPrices[0].close - stockPrices[62].close)
-    // let resultPercentage = (histPriceResultChange *100 / stockPrices[62].close)
+    // let histPriceResultChange = (stockPrices[0].close - stockPrices[64].close)
+    // let resultPercentage = (histPriceResultChange *100 / stockPrices[64].close)
 
     return (
         <> 
@@ -56,9 +56,9 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
                         <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
                     }
 
-                    {(stockPrices[0].close - stockPrices[62].close) >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▲ </li> :
-                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[62].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[62].close) *100 / stockPrices[62].close).toFixed(2)} %) ▼ </li>
+                    {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
+                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
+                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
                     }
 
                     <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
