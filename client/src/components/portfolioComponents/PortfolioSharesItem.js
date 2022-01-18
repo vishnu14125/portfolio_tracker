@@ -7,6 +7,7 @@ import {ImArrowDownRight2} from "react-icons/im"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
 import { editCurrentSharesDB } from "../../services/PortfolioServices";
+import ChartHoldingPriceHistory from "../sharedComponents/ChartHoldingPriceHistroy";
 
 const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSharesInCompany, addSomeSharesInCompany }) => {
     
@@ -168,6 +169,8 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 </td>
                 
             </tr>
+
+            <ChartHoldingPriceHistory holdingPriceData={heldShare.closePrices} />
 
 
 
