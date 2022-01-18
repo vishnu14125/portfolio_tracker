@@ -111,8 +111,8 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
         return result
     }
 
-    let profitOrLossTotal = differencePurchaseCurrentValueNum(totalPaidPrice, totalValue)
-    let profitOrLossPrc = differencePurchaseCurrentValuePrc(totalPaidPrice, totalValue)
+    let profitOrLossTotal = Number(differencePurchaseCurrentValueNum(totalPaidPrice, totalValue)).toFixed(2)
+    let profitOrLossPrc = Number(differencePurchaseCurrentValuePrc(totalPaidPrice, totalValue)).toFixed(2)
 
 
 
@@ -222,8 +222,9 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
 
                     <Form.Group className="mb-3">
                         <Form.Label>Price Paid Per Share</Form.Label>
-                        <Form.Control onChange={handlePricePaid} type="number"  defaultValue={heldShare.currentPrice} step="0.01" min="0" />
+                        <Form.Control onChange={handlePricePaid} type="number"  placeholder="Price Paid" step="0.01" min="0" />
                         <Form.Text className="text-muted">
+                        <p>Current Market Price: ${heldShare.currentPrice}</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.<br></br><br></br>
                         Current Average Price Paid: ${heldShare.avgPurchasePrice}</p>
                         </Form.Text>

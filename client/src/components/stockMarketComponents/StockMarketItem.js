@@ -27,6 +27,8 @@ const StockMarketItem = ({stock}) => {
         const numberOfShares = Number(newNumShares)
         const avgPurchasePrice = Number(newPriceShares)
 
+
+
         const shares = {
             name,
             symbol,
@@ -72,7 +74,7 @@ const StockMarketItem = ({stock}) => {
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Number of Shares to Add</Form.Label>
-                        <Form.Control onChange={handleNewNumShares} type="number" placeholder="Number of Shares" step="1" min="0" defaultValue="0"/>
+                        <Form.Control onChange={handleNewNumShares} type="number" placeholder="Number of Shares" step="1" min="0"/>
                         <Form.Text className="text-muted">
                         <p>If Your Portfolio Already Contains this Stock, Please Add Additional Shares From the Portfolio Page </p>
                         </Form.Text>
@@ -80,8 +82,9 @@ const StockMarketItem = ({stock}) => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Price Paid Per Share</Form.Label>
-                        <Form.Control onChange={handleNewPriceShares} type="number"  defaultValue={stock.price} step="0.01" min="0" />
+                        <Form.Control onChange={handleNewPriceShares} type="number"  placeholder="Price" step="0.01" min="0" />
                         <Form.Text className="text-muted">
+                        <p>Current Market Value: ${stock.price}</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.</p>
                         
                         </Form.Text>
