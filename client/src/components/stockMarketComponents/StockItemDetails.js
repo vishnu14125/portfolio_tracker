@@ -77,7 +77,8 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
 
                     <li><b>Ceo: </b>{stockDetails.ceo}</li>
                     <li><b>Country: </b>{stockDetails.country}, <b>Currency: </b>{stockDetails.currency}</li>
-                    <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
+                    <li><ChartPriceHistory closePriceData={stockPrices}/></li>
+
                     </ul>
                     </Col>
                 </Row>
