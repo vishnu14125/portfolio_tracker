@@ -4,7 +4,13 @@ import HighchartsReact from 'highcharts-react-official';
 
 const ChartHoldingPriceHistory = ({holdingPriceData}) => {
     
-    console.log(holdingPriceData)
+    const datePrice = holdingPriceData.map((day) => {
+        return ([
+            Date.parse(day[0]),
+            day[1]
+        ])
+    })
+    // console.log(datePrice)
 
     const options = {
         chart: {
@@ -27,7 +33,7 @@ const ChartHoldingPriceHistory = ({holdingPriceData}) => {
         },
         series:[
             {
-                data: holdingPriceData
+                data: datePrice
             }
         ]
     }
