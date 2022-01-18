@@ -43,7 +43,7 @@ const FavouriteStock = ({favourite, stockPrices}) => {
 
                     <li><b>Ceo: </b>{favourite.ceo}</li>
                     <li><b>Country: </b>{favourite.country}, <b>Currency: </b>{favourite.currency}</li>
-                    <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
+                    <li><ChartPriceHistory closePriceData={stockPrices}/></li>
                     </ul>
                     </Col>
                 </Row>
