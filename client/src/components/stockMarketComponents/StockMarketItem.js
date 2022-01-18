@@ -27,13 +27,15 @@ const StockMarketItem = ({stock}) => {
         const purchaseDate = date
         const numberOfShares = Number(newNumShares)
         const avgPurchasePrice = Number(newPriceShares)
+        const closePrices = [[Date.parse(date), avgPurchasePrice]]
 
         const shares = {
             name,
             symbol,
             purchaseDate,
             numberOfShares,
-            avgPurchasePrice
+            avgPurchasePrice,
+            closePrices
         }
 
         if (newNumShares <= 0){
