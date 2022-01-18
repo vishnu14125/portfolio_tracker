@@ -1,47 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {apikey} from '../../services/apikey';
-import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
+// import {apikey} from '../../services/apikey';
+// import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
 import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 
-const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavourites}) => {
-
-    const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
-    const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
-
-    // const [stockDetails, setStockDetails] = useState(null);
-    // const [stockPrices, setStockPrices] = useState(null);
-
-    useEffect(() => {
-        // const url1 = `https://financialmodelingprep.com/api/v3/profile/${symbol}?apikey=${apikey}`
-        // fetch(url1)
-        // .then(data => data.json())
-        // // data[0] - is an object
-        // .then(data => setStockDetails(data[0]))
-
-        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?timeseries=63&apikey=${apikey}`
-        // fetch(url2)
-        // .then(data => data.json())
-        // .then(data => {
-        //     setStockPrices(data.historical)
-        //     // data.historical - an array of 2 objects
-        //     historicStockPrice(data.historical)
-        // })
-        historicStockPrice(stockPrices)
-    },[symbol]);
-
-
-    const historicStockPrice = (stockClosePrices) => {
-        const hist30dayPrices = []
-        const result = stockClosePrices.map((stockPrice) => {
-            hist30dayPrices.push(stockPrice.close)
-        });
-        console.log("historicStockPrice", historicStockPrice);
-        handleHistPrices({
-            symbol: symbol,
-            prices: hist30dayPrices
-        });
-    };
+const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavourites, stockPrices, stockDetails}) => {
 
     const handleAddToFavourites = () => {
         const favourite = stockDetails

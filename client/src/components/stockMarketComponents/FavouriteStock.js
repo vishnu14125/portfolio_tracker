@@ -2,7 +2,7 @@ import React from 'react';
 import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
 import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 
-const FavouriteStock = ({favourite}) => {
+const FavouriteStock = ({favourite, stockPrices}) => {
 
     return (
         <div>
@@ -43,7 +43,7 @@ const FavouriteStock = ({favourite}) => {
 
                     <li><b>Ceo: </b>{favourite.ceo}</li>
                     <li><b>Country: </b>{favourite.country}, <b>Currency: </b>{favourite.currency}</li>
-                    {/* <li><ChartPriceHistory historicalPrices={favourite}/></li> */}
+                    <li><ChartPriceHistory historicalPrices={stockPrices}/></li>
                     </ul>
                     </Col>
                 </Row>
