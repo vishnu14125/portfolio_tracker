@@ -28,6 +28,7 @@ const StockMarketList = ({stocks}) => {
                 <th>Sector</th>
                 <th>Industry</th>
                 <th>Country</th>
+                <th>Add Position</th>
             </tr>
             </thead>
                 <tbody>
