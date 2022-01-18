@@ -8,7 +8,7 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
 
     const handleAddToFavourites = () => {
         const favourite = stockDetails
-        favourite.currentSharePrice = stockPrices[0].open + stockPrices[0].change
+        favourite.currentSharePrice = (stockPrices[0].open + stockPrices[0].change).toFixed(2)
          
         {stockPrices[0].change >= 0 ?
             favourite.currentDayChange =
@@ -49,7 +49,7 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
                     <ul style={{listStyle:'none'}}>
 
                     <li><b>Symbol: </b>{stockDetails.symbol}</li>
-                    <li><b>Current share price: </b>$ {stockPrices[0].open + stockPrices[0].change}</li>
+                    <li><b>Current share price: </b>$ {(stockPrices[0].open + stockPrices[0].change).toFixed(2)}</li>
 
                     {stockPrices[0].change >= 0 ?
                         <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
