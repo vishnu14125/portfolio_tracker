@@ -1,10 +1,10 @@
-// import React, {useEffect, useState} from 'react';
+import React from 'react';
 // import {apikey} from '../../services/apikey';
 // import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Button, Card, Row, Col} from "react-bootstrap";
 import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 
-const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavourites, stockPrices, stockDetails}) => {
+const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
 
     const handleAddToFavourites = () => {
         const favourite = stockDetails
@@ -23,7 +23,7 @@ const StockItemDetails = ({symbol, handleHistPrices, historicalPrices, addToFavo
             favourite.change3Months =
             <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
         };
-        console.log("Before sending", favourite);
+        // console.log("Before sending", favourite);
         addToFavourites(favourite)
     };
 
