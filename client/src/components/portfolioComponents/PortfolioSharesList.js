@@ -1,9 +1,9 @@
 import PortfolioSharesItem from "./PortfolioSharesItem";
 
-const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany, removeSomeSharesInCompany }) => {
+const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany, removeSomeSharesInCompany, addSomeSharesInCompany }) => {
 
     const portfolioSharesItems = heldShares.map((heldShare, index) => {
-        return <PortfolioSharesItem heldShare={heldShare} key={index} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany} />
+        return <PortfolioSharesItem heldShare={heldShare} key={index} removeHeldSharesInCompany={removeHeldSharesInCompany} removeSomeSharesInCompany={removeSomeSharesInCompany} addSomeSharesInCompany={addSomeSharesInCompany} />
     })
 
 
