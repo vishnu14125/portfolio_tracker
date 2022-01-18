@@ -1,5 +1,5 @@
 import { Modal, Button, Form } from "react-bootstrap";
-import {AiFillFileAdd} from "react-icons/ai"
+import {AiFillFileAdd, AiOutlineAreaChart} from "react-icons/ai"
 import {HiDocumentRemove, HiOutlineDatabase} from "react-icons/hi"
 import {BsFillTrashFill} from "react-icons/bs"
 import {ImArrowUpRight2} from "react-icons/im"
@@ -17,9 +17,13 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
     const [sharesToRemove, setSharesToRemove] = useState(0)
     const [sharesToAdd, setSharesToAdd] = useState(0)
     const [pricePaid, setPricePaid] = useState(0)
+    const [showChart, setShowChart] = useState(false)
 
     const handleShowDelete = () => setShowDelete(true);
     const handleCloseDelete = () => setShowDelete(false);
+
+    const handleShowChart = () => setShowChart(true)
+    const handleCloseChart = () => setShowChart(false)
 
     const handleShowAddMoreHeldShares = () => setShowAddMoreHeldShares(true);
     const handleCloseAddMoreHeldShares = () => setShowAddMoreHeldShares(false);
@@ -156,6 +160,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                  {Number(profitOrLossTotal) >= 0 ? <ImArrowUpRight2 /> : <ImArrowDownRight2 />} ${profitOrLossTotal} ({profitOrLossPrc}%)
                      
                 </td>
+                
                 <td>
                 <Button variant="success" onClick={handleShowAddMoreHeldShares}>
                  <AiFillFileAdd />
@@ -166,13 +171,44 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 <Button variant="danger" onClick={handleShowDelete}>
                  <BsFillTrashFill/>
                 </Button>
+                <Button variant="info" onClick={handleShowChart}>
+                 <AiOutlineAreaChart/>
+                </Button>
                 </td>
                 
             </tr>
 
-            <ChartHoldingPriceHistory holdingPriceData={heldShare.closePrices} />
+            
 
 
+
+
+
+
+
+
+
+
+
+
+            <Modal
+            show={showChart}
+            onHide={handleCloseChart}
+            keyboard={false}>
+
+                <Modal.Header closeButton>
+                    <Modal.Title>Price History</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                <ChartHoldingPriceHistory holdingPriceData={heldShare.closePrices} />
+
+                
+                </Modal.Body>
+
+                <Modal.Footer>
+                </Modal.Footer>
+            </Modal>    
 
 {/* -----------------------MODALS-------------------- */}
 {/* ------------------------DELETE ALL SHARES IN A COMPANY--------------- */}
@@ -285,6 +321,10 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                     </Button>
                 </Modal.Footer>
             </Modal>    
+
+
+
+
 
 
 
