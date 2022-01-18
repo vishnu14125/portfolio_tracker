@@ -54,10 +54,6 @@ const PortfolioContainer = ({apiData}) => {
         setPortfolioTotals(newPortfolioTotals)        
     }, [sharesWithPrice])
 
-    const addNewClosePrice = () => {
-        
-    }
-
     //REMOVE ALL SHARES IN A PARTICULAR COMPANY
     const removeHeldSharesInCompany = (id) => {
         const temp = heldShares.map(shares => shares);
