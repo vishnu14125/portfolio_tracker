@@ -8,12 +8,14 @@ import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
 import { editCurrentSharesDB } from "../../services/PortfolioServices";
 
-const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSharesInCompany }) => {
+const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSharesInCompany, addSomeSharesInCompany }) => {
     
     const [showDelete, setShowDelete] = useState(false);
     const [showAddMoreHeldShares, setShowAddMoreHeldShares] = useState(false);
     const [showRemoveSomeHeldShares, setShowRemoveSomeHeldShares] = useState(false);
     const [sharesToRemove, setSharesToRemove] = useState(0)
+    const [sharesToAdd, setSharesToAdd] = useState(0)
+    const [pricePaid, setPricePaid] = useState(0)
 
     const handleShowDelete = () => setShowDelete(true);
     const handleCloseDelete = () => setShowDelete(false);
@@ -25,6 +27,9 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
     const handleCloseRemoveSomeHeldShares = () => setShowRemoveSomeHeldShares(false);
     
     const handleNumberOfSharesToRemove = event => setSharesToRemove(event.target.value)
+
+    const handleNumberOfSharesToAdd = event => setSharesToAdd(event.target.value)
+    const handlePricePaid = event => setPricePaid(event.target.value)
     
     
 
@@ -37,6 +42,39 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
         })
         handleCloseDelete()
     }
+
+
+    
+       
+
+    
+
+    const handleAdd = () => {
+        const currTotalPaid = heldShare.avgPurchasePrice * heldShare.numberOfShares
+        const newSharesTotal = Number(pricePaid) * Number(sharesToAdd)
+        const newTotalPaid = newSharesTotal + currTotalPaid
+        const newNumberOfShares = Number(heldShare.numberOfShares) + Number(sharesToAdd)
+        const newAvgPrice = newTotalPaid / newNumberOfShares
+        const newNumSharesNum = Number(newNumberOfShares.toFixed(2))
+        const newAvgPriceNum = Number(newAvgPrice.toFixed(2))
+
+        const shares = {
+            numberOfShares: newNumSharesNum,
+            avgPurchasePrice: newAvgPriceNum
+        }
+        if (pricePaid <= 0){
+            return
+        }else if (sharesToAdd <= 0){
+            return
+        }else{
+            editCurrentSharesDB(heldShare._id, shares)
+            .then(() => {
+                addSomeSharesInCompany(heldShare._id, newNumSharesNum, newAvgPriceNum)
+            })
+            handleCloseAddMoreHeldShares()
+            setSharesToAdd(0)
+            setPricePaid(0)
+        }}
    
 
     const handleRemove = () => {
@@ -159,7 +197,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
             </Modal>
 
 
-{/* ----------------------------ADD MORE SHARES IN A HELD STOCK---------------- */}
+    {/* ----------------------------ADD MORE SHARES IN A HELD STOCK---------------- */}
 
         <Modal
             show={showAddMoreHeldShares}
@@ -175,15 +213,16 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Number of Shares Purchased</Form.Label>
-                        <Form.Control type="number" placeholder="Number of Shares" step="1" min="0" defaultValue="0"/>
+                        <Form.Control onChange={handleNumberOfSharesToAdd} type="number" placeholder="Number of Shares" step="1" min="0" defaultValue="0"/>
                         <Form.Text className="text-muted">
                         <p>Current Number of Shares: {heldShare.numberOfShares}</p>
+                        <p>New Number of Shares: {heldShare.numberOfShares + Number(sharesToAdd)}</p>
                         </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Price Paid Per Share</Form.Label>
-                        <Form.Control type="number"  defaultValue={heldShare.currentPrice} step="0.01" min="0" />
+                        <Form.Control onChange={handlePricePaid} type="number"  defaultValue={heldShare.currentPrice} step="0.01" min="0" />
                         <Form.Text className="text-muted">
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.<br></br><br></br>
                         Current Average Price Paid: ${heldShare.avgPurchasePrice}</p>
@@ -196,7 +235,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                     <Button variant="secondary" onClick={handleCloseAddMoreHeldShares}>
                         Cancel
                     </Button>
-                    <Button variant="success" type="submit">
+                    <Button  onClick={handleAdd} variant="success" type="submit">
                         Add
                     </Button>
                 </Modal.Footer>
@@ -250,6 +289,6 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
         
 
     );
+    
 }
- 
 export default PortfolioSharesItem;
