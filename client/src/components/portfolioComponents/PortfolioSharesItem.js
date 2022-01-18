@@ -4,7 +4,6 @@ import {HiDocumentRemove, HiOutlineDatabase} from "react-icons/hi"
 import {BsFillTrashFill} from "react-icons/bs"
 import {ImArrowUpRight2} from "react-icons/im"
 import {ImArrowDownRight2} from "react-icons/im"
-import {BiTrendingDown, BiTrendingUp} from "react-icons/bi"
 import { useState } from "react";
 import { deleteShares } from "../../services/PortfolioServices";
 import { editCurrentSharesDB } from "../../services/PortfolioServices";
