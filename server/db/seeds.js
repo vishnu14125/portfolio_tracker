@@ -1,7 +1,7 @@
 use portfolio;
 db.dropDatabase();
 
-const closeArr = [[Date.parse('2021-01-05'), 200.15], [Date.parse('2021-01-06'), 202.15], [Date.parse('2021-01-07'), 225.50], [Date.parse('2021-01-08'), 260.50]]
+const closeArr = [['2021-01-05', 200.15], ['2021-01-06', 202.15], ['2021-01-07', 225.50], ['2021-01-08', 260.50]]
 
 db.shares.insertMany([
     
