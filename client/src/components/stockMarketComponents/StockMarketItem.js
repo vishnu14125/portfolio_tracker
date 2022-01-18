@@ -27,8 +27,6 @@ const StockMarketItem = ({stock}) => {
         const numberOfShares = Number(newNumShares)
         const avgPurchasePrice = Number(newPriceShares)
 
-
-
         const shares = {
             name,
             symbol,
@@ -36,10 +34,22 @@ const StockMarketItem = ({stock}) => {
             numberOfShares,
             avgPurchasePrice
         }
+
+        if (newNumShares <= 0){
+            return
+        }else if (newPriceShares <= 0){
+            return
+        }else{
         postNewShareAdd(shares)
         handleCloseAddPosition()
         setNewNumShares(0)
         setNewPriceShares(0)
+        }
+
+
+
+
+       
         
     }
 
@@ -82,7 +92,7 @@ const StockMarketItem = ({stock}) => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Price Paid Per Share</Form.Label>
-                        <Form.Control onChange={handleNewPriceShares} type="number"  placeholder="Price" step="0.01" min="0" />
+                        <Form.Control onChange={handleNewPriceShares} type="number"  placeholder="Price"  step="0.01" min="0" />
                         <Form.Text className="text-muted">
                         <p>Current Market Value: ${stock.price}</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.</p>

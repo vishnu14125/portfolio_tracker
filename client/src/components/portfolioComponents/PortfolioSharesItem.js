@@ -75,7 +75,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
             setSharesToAdd(0)
             setPricePaid(0)
         }}
-   
+    
 
     const handleRemove = () => {
 
