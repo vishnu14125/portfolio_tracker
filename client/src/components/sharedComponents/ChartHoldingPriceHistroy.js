@@ -21,8 +21,8 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
         setHistoricalData(fetchedStockPrices) // Comment out and comment in above to switch to fetched data
     }, []) 
     
-    const purchased = 1635206400000;  //Date.parse(holdingData.purchaseDate)
-    console.log(purchased)
+    // const purchased = 1635206400000;  //Date.parse(holdingData.purchaseDate)
+    // console.log(purchased)
 
     const datePrice = historicalData.map((day) => {
             return ([
@@ -31,23 +31,17 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
             ])
         })
         .reverse() 
-    console.log(datePrice)   
+    // console.log(datePrice)   
     
     const options = {
         chart: {
-            borderWidth: 1,
-            // type: 'area'
+            borderWidth: 1
         },
         title: {
             text: "Previous close prices"
         },
         tooltip: {
             pointFormat: 'Close price: <b>$ {point.y: .2f}</b>'
-        },
-        plotOptions: {
-            area: {
-                pointStart: purchased
-            }
         },
         xAxis: {
             type: 'datetime'
