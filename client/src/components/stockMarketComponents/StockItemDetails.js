@@ -184,7 +184,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                         <Form.Label>Price Paid Per Share</Form.Label>
                         <Form.Control onChange={handleNewPriceShares} type="number"  placeholder="Price"  step="0.01" min="0" />
                         <Form.Text className="text-muted">
-                        <p>Current Market Value: ${stockPrices[0].open + stockPrices[0].change }</p>
+                        <p>Current Market Value: $ {stockPrices[0].open + stockPrices[0].change }</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.</p>
                         
                         </Form.Text>
