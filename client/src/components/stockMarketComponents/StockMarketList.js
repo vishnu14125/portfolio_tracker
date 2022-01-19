@@ -19,6 +19,7 @@ const StockMarketList = ({stocks}) => {
     };
 
 
+    // table-striped
     return (
         <div>
             <Table size="sm" striped hover shadow p-3 mb-5 bg-white rounded className="table">

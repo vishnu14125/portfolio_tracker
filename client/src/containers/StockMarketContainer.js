@@ -14,36 +14,37 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
     const [searchedStockSymbol, setSearchedStockSymbol] = useState(null);
     const [stockFavourites, setStockFavourites] = useState([]);
 
-    const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
-    const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
+    // const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
+    // const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
 
-    // const [stockDetails, setStockDetails] = useState(null);
-    // const [stockPrices, setStockPrices] = useState(null);
+    const [stockDetails, setStockDetails] = useState(null);
+    const [stockPrices, setStockPrices] = useState(null);
 
     useEffect(() => {
-        // const url1 = `https://financialmodelingprep.com/api/v3/profile/${searchedStockSymbol}?apikey=${apikey}`
-        // fetch(url1)
-        // .then(data => data.json())
-        // // data[0] - is an object
-        // .then(data => setStockDetails(data[0]))
+        const url1 = `https://financialmodelingprep.com/api/v3/profile/${searchedStockSymbol}?apikey=${apikey}`
+        fetch(url1)
+        .then(data => data.json())
+        // data[0] - is an object
+        .then(data => setStockDetails(data[0]))
 
-        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
-        // fetch(url2)
-        // .then(data => data.json())
-        // .then(data => {
-        //     setStockPrices(data.historical)
-        //     // data.historical - an array of 2 objects
-        //     historicStockPrice(data.historical)
-        // })
+        const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
+        fetch(url2)
+        .then(data => data.json())
+        .then(data => {
+            setStockPrices(data.historical)
+            // data.historical - an array of 2 objects
+            historicStockPrice(data.historical)
+        })
         // historicStockPrice(stockPrices)
     },[searchedStockSymbol]);
 
 
     const historicStockPrice = (stockClosePrices) => {
         const hist30dayPrices = []
-        const result = stockClosePrices.map((stockPrice) => {
+        if (stockClosePrices.length > 0){
+            const result = stockClosePrices.map((stockPrice) => {
             hist30dayPrices.push(stockPrice.close)
-        });
+        })};
         console.log("historicStockPrice", historicStockPrice);
         handleHistPrices({
             symbol: searchedStockSymbol,
@@ -52,6 +53,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
     };
 
     const handleSearchedStock = (stockName) => {
+        console.log("stockName", stockName);
         // Change the state with event.target.value after enter
         setSearchedStockSymbol(stockName)
     };
@@ -72,7 +74,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
                     </Col>
                 </Row>
                 <Row>
-                    {searchedStockSymbol ? <Col><StockItemDetails symbol={searchedStockSymbol} handleHistPrices={handleHistPrices} historicalPrices={historicalPrices} addToFavourites={addToFavourites} stockPrices={stockPrices} stockDetails={stockDetails}/></Col> : null}
+                    {searchedStockSymbol && stockDetails && stockPrices ? <Col><StockItemDetails symbol={searchedStockSymbol} handleHistPrices={handleHistPrices} historicalPrices={historicalPrices} addToFavourites={addToFavourites} stockPrices={stockPrices} stockDetails={stockDetails}/></Col> : null}
                 </Row>
 
                 {displayFavourites}
