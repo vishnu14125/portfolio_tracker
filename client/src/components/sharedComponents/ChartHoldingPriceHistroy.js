@@ -12,7 +12,7 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
     
     const searchedStockSymbol = holdingData.symbol;
     const apikey = '6e1d003f9be4920d1d0f30b1132132ba'
-    console.log(searchedStockSymbol)
+    // console.log(searchedStockSymbol)
 
         const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
 
@@ -32,7 +32,7 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
             ])
         })
         .reverse()    
-    console.log(datePrice)
+    // console.log(datePrice)
 
     const options = {
         chart: {
