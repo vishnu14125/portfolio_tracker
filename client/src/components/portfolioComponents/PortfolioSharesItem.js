@@ -201,7 +201,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 </Modal.Header>
                 <Modal.Body>
 
-                <ChartHoldingPriceHistory holdingPriceData={heldShare.closePrices} />
+                <ChartHoldingPriceHistory holdingData={heldShare} />
 
                 
                 </Modal.Body>
