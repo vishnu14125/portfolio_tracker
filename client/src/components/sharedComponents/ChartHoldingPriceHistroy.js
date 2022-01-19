@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
-// import {apikey} from '../../services/apikey';
+import {apikey} from '../../services/apikey';
 import {fetchedStockPrices} from '../stockMarketComponents/fetchedData';
 
 
