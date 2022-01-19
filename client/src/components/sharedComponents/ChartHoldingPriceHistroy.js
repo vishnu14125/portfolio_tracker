@@ -15,10 +15,10 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
 
         
     useEffect(() => {
-        // fetch(url)
-        // .then(res => res.json())
-        // .then(res => setHistoricalData(res.historical))
-        setHistoricalData(fetchedStockPrices) // Comment out and comment in above to switch to fetched data
+        fetch(url)
+        .then(res => res.json())
+        .then(res => setHistoricalData(res.historical))
+        // setHistoricalData(fetchedStockPrices) // Comment out and comment in above to switch to fetched data
     }, []) 
     
     // const purchased = 1635206400000;  //Date.parse(holdingData.purchaseDate)

@@ -14,28 +14,28 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
     const [searchedStockSymbol, setSearchedStockSymbol] = useState(null);
     const [stockFavourites, setStockFavourites] = useState([]);
 
-    const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
-    const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
+    // const [stockDetails, setStockDetails] = useState(fetchedStockDetails);
+    // const [stockPrices, setStockPrices] = useState(fetchedStockPrices);
 
-    // const [stockDetails, setStockDetails] = useState(null);
-    // const [stockPrices, setStockPrices] = useState(null);
+    const [stockDetails, setStockDetails] = useState(null);
+    const [stockPrices, setStockPrices] = useState(null);
 
     useEffect(() => {
-        // const url1 = `https://financialmodelingprep.com/api/v3/profile/${searchedStockSymbol}?apikey=${apikey}`
-        // fetch(url1)
-        // .then(data => data.json())
-        // // data[0] - is an object
-        // .then(data => setStockDetails(data[0]))
+        const url1 = `https://financialmodelingprep.com/api/v3/profile/${searchedStockSymbol}?apikey=${apikey}`
+        fetch(url1)
+        .then(data => data.json())
+        // data[0] - is an object
+        .then(data => setStockDetails(data[0]))
 
-        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
-        // fetch(url2)
-        // .then(data => data.json())
-        // .then(data => {
-        //     setStockPrices(data.historical)
-        //     // data.historical - an array of 2 objects
-        //     historicStockPrice(data.historical)
-        // })
-        // // historicStockPrice(stockPrices)
+        const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
+        fetch(url2)
+        .then(data => data.json())
+        .then(data => {
+            setStockPrices(data.historical)
+            // data.historical - an array of 2 objects
+            historicStockPrice(data.historical)
+        })
+        // historicStockPrice(stockPrices)
     },[searchedStockSymbol]);
 
 
