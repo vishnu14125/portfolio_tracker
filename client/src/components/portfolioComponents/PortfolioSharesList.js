@@ -13,7 +13,7 @@ const PortfolioSharesList = ({heldShares, removeHeldSharesInCompany, removeSomeS
     return ( 
 
         <>
-            <Table size="sm" table-striped table-hover table-responsive shadow p-3 mb-5 bg-white rounded className="table">
+            <Table size="sm" striped hover  shadow p-3 mb-5 bg-white rounded className="table">
             <thead className="table-dark" >
             <tr>
                 <th>Symbol</th>
