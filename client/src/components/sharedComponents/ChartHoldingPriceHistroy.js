@@ -19,7 +19,7 @@ const ChartHoldingPriceHistory = ({holdingData}) => {
         .then(res => res.json())
         .then(res => setHistoricalData(res.historical))
         // setHistoricalData(fetchedStockPrices) // Comment out and comment in above to switch to fetched data
-    }, []) 
+    }, [url]) 
     
     // const purchased = 1635206400000;  //Date.parse(holdingData.purchaseDate)
     // console.log(purchased)
