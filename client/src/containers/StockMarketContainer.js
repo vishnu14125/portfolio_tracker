@@ -21,6 +21,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
     const [stockPrices, setStockPrices] = useState(null);
 
     useEffect(() => {
+        if (searchedStockSymbol){
         const url1 = `https://financialmodelingprep.com/api/v3/profile/${searchedStockSymbol}?apikey=${apikey}`
         fetch(url1)
         .then(data => data.json())
@@ -34,7 +35,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
             setStockPrices(data.historical)
             // data.historical - an array of 2 objects
             historicStockPrice(data.historical)
-        })
+        })}
         // historicStockPrice(stockPrices)
     },[searchedStockSymbol]);
 
