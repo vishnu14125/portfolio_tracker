@@ -70,8 +70,8 @@ const FavouriteStock = ({favourite, stockPrices}) => {
 
 
     return (
-        <div>
-        <Card border="primary" style={{width:'90%', margin:'auto'}}>
+        <div className="fav">
+        <Card className='text-center' style={{width:'100%', margin:'auto'}}>
             <Card.Header><h3 style={{textAlign:'center'}}><b>{favourite.companyName}</b></h3>
             <Button variant="success" onClick={handleShowAddPosition}>
                  <AiFillFileAdd />
@@ -81,10 +81,13 @@ const FavouriteStock = ({favourite, stockPrices}) => {
             <Card.Body>
                 <Row>
                     <Col xs={3}>
-                    <img src={favourite.image} style={{width:'70%', margin:'auto'}}></img>
+                    <img src={favourite.image} style={{width:'15%', margin:'auto'}}></img>
                     </Col>
-                    
-                    <Col>
+                </Row>
+                <Row >
+                
+
+                <Col className='text-center'>
                     <ul style={{listStyle:'none'}}>
 
                     <li><b>Symbol: </b>{favourite.symbol}</li>
@@ -99,6 +102,9 @@ const FavouriteStock = ({favourite, stockPrices}) => {
                     <li><b>Industry: </b>{favourite.industry}</li>
                     <li><b>Website: </b><a href={favourite.website}>{favourite.website}</a></li>
 
+
+                    <li><b>Ceo: </b>{favourite.ceo}</li>
+                    <li><b>Country: </b>{favourite.country}, <b>Currency: </b>{favourite.currency}</li>
                     <Accordion>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header><b>Description: </b></Accordion.Header>
@@ -107,12 +113,14 @@ const FavouriteStock = ({favourite, stockPrices}) => {
                         </Accordion.Body>
                     </Accordion.Item>
                     </Accordion>
-
-                    <li><b>Ceo: </b>{favourite.ceo}</li>
-                    <li><b>Country: </b>{favourite.country}, <b>Currency: </b>{favourite.currency}</li>
+                    <li><br /></li>
                     <li><ChartPriceHistory closePriceData={stockPrices}/></li>
                     </ul>
                     </Col>
+
+
+
+
                 </Row>
             </Card.Body>
         </Card>

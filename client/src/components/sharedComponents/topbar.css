@@ -1,10 +1,11 @@
 .topbar {
     width: 100%;
-    height: 50px;
-    background-color: rgb(231, 191, 236);
+    height: 80px;
+    background-color: white;
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: solid 1px rgb(236, 226, 226);
   }
   
   .topbarWrapper {
@@ -18,7 +19,7 @@
   .logo {
     font-weight: bold;
     font-size: 30px;
-    color: rgb(11, 133, 66);
+    color: rgb(148, 11, 86);
     cursor: pointer;
   }
   

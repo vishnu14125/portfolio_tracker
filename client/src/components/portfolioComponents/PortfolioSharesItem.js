@@ -162,6 +162,9 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 </td>
                 
                 <td>
+                <Button variant="info" onClick={handleShowChart}>
+                 <AiOutlineAreaChart/>
+                </Button>
                 <Button variant="success" onClick={handleShowAddMoreHeldShares}>
                  <AiFillFileAdd />
                 </Button>
@@ -170,9 +173,6 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
                 </Button>
                 <Button variant="danger" onClick={handleShowDelete}>
                  <BsFillTrashFill/>
-                </Button>
-                <Button variant="info" onClick={handleShowChart}>
-                 <AiOutlineAreaChart/>
                 </Button>
                 </td>
                 
