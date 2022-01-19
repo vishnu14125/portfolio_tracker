@@ -54,7 +54,7 @@ const MasterContainer = () => {
      </div> */}
     
      </div>
-     <Footer />
+     {/* <Footer /> */}
      </Router>
        
       

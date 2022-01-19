@@ -1,26 +1,37 @@
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+import {apikeyPH} from '../../services/apikey';
+import {useEffect, useState} from 'react';
 
 
-const ChartPriceHistory = ({closePriceData}) => {
+const ChartHoldingPriceHistory = ({holdingData}) => {
     
-    // console.log(historicalPrices)
+    const [historicalData, setHistoricalData] = useState([])
+    
+    const searchedStockSymbol = holdingData.symbol;
 
-    // const dates = historicalPrices.map(day => Date.parse(day.date)).reverse()
-    // console.log(dates)
+    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikeyPH}`
 
-    // const prices = historicalPrices.map(day => day.adjClose).reverse()
-    // console.log(prices)
+        
+    useEffect(() => {
+        fetch(url)
+        .then(res => res.json())
+        .then(res => setHistoricalData(res.historical))
+        // setHistoricalData(fetchedStockPrices) // Comment out and comment in above to switch to fetched data
+    }, []) 
+    
+    // const purchased = 1635206400000;  //Date.parse(holdingData.purchaseDate)
+    // console.log(purchased)
 
-    const datePrice = closePriceData.map((day) => {
-        return ([
-            Date.parse(day.date),
-            day.adjClose
-        ])
+    const datePrice = historicalData.map((day) => {
+            return ([
+                Date.parse(day.date),
+                day.adjClose
+            ])
         })
-        .reverse()
+        .reverse() 
+    // console.log(datePrice)   
     
-
     const options = {
         chart: {
             borderWidth: 1
@@ -57,7 +68,7 @@ const ChartPriceHistory = ({closePriceData}) => {
                         [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
                     ]
                 }
-            }
+            },
         ]
     }
 
@@ -66,4 +77,4 @@ const ChartPriceHistory = ({closePriceData}) => {
     )
 }
 
-export default ChartPriceHistory;
+export default ChartHoldingPriceHistory;

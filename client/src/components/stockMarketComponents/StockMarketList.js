@@ -1,4 +1,6 @@
 import StockMarketItem from './StockMarketItem';
+import { Table } from 'react-bootstrap';
+import './StockMarket.css'
 
 
 const StockMarketList = ({stocks}) => {
@@ -19,7 +21,7 @@ const StockMarketList = ({stocks}) => {
 
     return (
         <div>
-            <table className="table table-striped table-hover table-responsive-md">
+            <Table size="sm" table-striped table-hover table-responsive shadow p-3 mb-5 bg-white rounded className="table">
             <thead className="table-dark" >
             <tr>
                 <th>Symbol</th>
@@ -28,12 +30,13 @@ const StockMarketList = ({stocks}) => {
                 <th>Sector</th>
                 <th>Industry</th>
                 <th>Country</th>
+                <th>Add Position</th>
             </tr>
             </thead>
                 <tbody>
                     {stockItems}
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 };

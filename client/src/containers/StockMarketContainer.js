@@ -27,7 +27,7 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
         // // data[0] - is an object
         // .then(data => setStockDetails(data[0]))
 
-        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=63&apikey=${apikey}`
+        // const url2 = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchedStockSymbol}?timeseries=65&apikey=${apikey}`
         // fetch(url2)
         // .then(data => data.json())
         // .then(data => {

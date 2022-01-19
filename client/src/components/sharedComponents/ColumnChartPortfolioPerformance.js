@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { BsTextCenter } from 'react-icons/bs';
 import { ImPriceTag } from 'react-icons/im';
+import './ChartHoldingByCompany.css'
 
 const ColumnChartPortfolioPerformance = ({ portfolioData, portfolioTotals }) => {
 
@@ -76,17 +77,22 @@ const ColumnChartPortfolioPerformance = ({ portfolioData, portfolioTotals }) => 
                 data: holdingsTotalValue
             },
             {
-                name: 'Profit/Loss',
+                name: 'Profit',
                 data: holdingsPL,
                 color: '#33FF57',
                 negativeColor: '#FF5733'
             },
+            {
+                name: 'Loss',
+                color: '#FF5733'
+            }
         ]
     }
 
     return (
+        <div className='barchart'>
         <HighchartsReact highcharts={Highcharts} options={options} />
-
+        </div>
     )
 
 }
