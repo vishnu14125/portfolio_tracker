@@ -30,6 +30,7 @@ const StockMarketSearch = ({stocks, handleSearchedStock}) => {
         handleSearchedStock(event.target.value)
         console.log("I am handleClick", event.target.value);
     };
+    
 
 
 
@@ -40,7 +41,7 @@ const StockMarketSearch = ({stocks, handleSearchedStock}) => {
     return (
         <div style={{textAlign:'center'}}>
             <label>
-            <input style={{width:'200px', margin:'10px'}} 
+            <input className='searchbox' style={{width:'200px', margin:'10px'}} 
                 onChange={handleSearchChange} 
                 onKeyDown = {event => event.key == "Enter" ? handleEnter(event) : null}
                 list="browsers" name="browser" autoComplete="off" placeholder="Search by name or symbol"

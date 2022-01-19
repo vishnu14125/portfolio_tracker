@@ -4,8 +4,11 @@ import React from 'react';
 import {Accordion, Button, Card, Row, Col, Modal, Form} from "react-bootstrap";
 import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
 import {AiFillFileAdd} from "react-icons/ai"
+import {MdCompare} from "react-icons/md"
+import {BiTrendingDown, BiTrendingUp} from "react-icons/bi"
 import { postNewShareAdd } from "../../services/PortfolioServices";
 import { useState } from 'react';
+import './StockMarket.css'
 
 const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
 
@@ -68,9 +71,9 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
          
         {stockPrices[0].change >= 0 ?
             favourite.currentDayChange =
-            <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
+            <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingUp /> </li> :
             favourite.currentDayChange =
-            <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
+            <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingDown /> </li>
         };
 
         {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
@@ -90,35 +93,39 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
         <> 
         
         {stockDetails && stockPrices ? 
-        <div>
-        <Card border="primary" style={{width:'90%', margin:'auto'}}>
-            <Card.Header><h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b>
-            <Button variant="outline-primary" onClick={handleAddToFavourites} style={{marginLeft:'5%'}}> ➕ </Button></h3>
-            <Button variant="success" onClick={handleShowAddPosition}>
+        <div className='card'>
+        <Card  clasName='text-center' style={{width:'100%', margin:'auto'}}>
+            <Card.Header>  <Button variant="success" onClick={handleShowAddPosition}>
                  <AiFillFileAdd />
-                </Button>
+                </Button> <h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b>
+            <Button variant="outline-primary" onClick={handleAddToFavourites} style={{marginLeft:'5%'}}> <MdCompare /> </Button></h3>
+           
             </Card.Header>
 
-            <Card.Body>
+            <Card.Body className='text-center'>
                 <Row>
                     <Col xs={3}>
-                    <img src={stockDetails.image} style={{width:'70%', margin:'auto'}}></img>
+                    <img src={stockDetails.image} style={{width:'15%', margin:'auto'}}></img>
                     </Col>
                     
-                    <Col>
+                    
+                </Row>
+                <Row>
+                    <Col className='text-center'>
                     <ul style={{listStyle:'none'}}>
 
+            
                     <li><b>Symbol: </b>{stockDetails.symbol}</li>
                     <li><b>Current share price: </b>$ {(stockPrices[0].open + stockPrices[0].change).toFixed(2)}</li>
 
                     {stockPrices[0].change >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
-                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
+                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingUp /> </li> :
+                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingDown /> </li>
                     }
 
                     {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
-                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
+                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingUp /> </li> :
+                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingDown /> </li>
                     }
 
                     <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
@@ -126,6 +133,10 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                     <li><b>Industry: </b>{stockDetails.industry}</li>
                     <li><b>Website: </b><a href={stockDetails.website}>{stockDetails.website}</a></li>
 
+    
+
+                    <li><b>Ceo: </b>{stockDetails.ceo}</li>
+                    <li><b>Country: </b>{stockDetails.country}, <b>Currency: </b>{stockDetails.currency}</li>
                     <Accordion>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header><b>Description: </b></Accordion.Header>
@@ -134,9 +145,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                         </Accordion.Body>
                     </Accordion.Item>
                     </Accordion>
-
-                    <li><b>Ceo: </b>{stockDetails.ceo}</li>
-                    <li><b>Country: </b>{stockDetails.country}, <b>Currency: </b>{stockDetails.currency}</li>
+                    <li><br /></li>
                     <li><ChartPriceHistory closePriceData={stockPrices}/></li>
 
                     </ul>
@@ -144,7 +153,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                 </Row>
             </Card.Body>
         </Card>
-        <br></br>
+        
 
         </div>
         : null}

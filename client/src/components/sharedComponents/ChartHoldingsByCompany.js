@@ -1,5 +1,6 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import './ChartHoldingByCompany.css'
 
 const ChartHoldingsByCompany = ({sharesData}) => {
     
@@ -52,8 +53,9 @@ const ChartHoldingsByCompany = ({sharesData}) => {
     }
     
     return (
+        <div className='piechart'>
         <HighchartsReact highcharts={Highcharts} options={options} />
-
+        </div>
     )
 }
 
