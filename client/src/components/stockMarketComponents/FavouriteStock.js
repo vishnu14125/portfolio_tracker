@@ -1,6 +1,6 @@
 import React from 'react';
 import {Accordion, Button, Card, Row, Col, Form, Modal} from "react-bootstrap";
-import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
+import ChartHoldingPriceHistory from '../sharedComponents/ChartHoldingPriceHistroy';
 import {AiFillFileAdd} from "react-icons/ai"
 import { postNewShareAdd } from "../../services/PortfolioServices";
 import { useState } from 'react';
@@ -114,7 +114,7 @@ const FavouriteStock = ({favourite, stockPrices}) => {
                     </Accordion.Item>
                     </Accordion>
                     <li><br /></li>
-                    <li><ChartPriceHistory closePriceData={stockPrices}/></li>
+                    <li><ChartHoldingPriceHistory holdingData={favourite}/></li>
                     </ul>
                     </Col>
 

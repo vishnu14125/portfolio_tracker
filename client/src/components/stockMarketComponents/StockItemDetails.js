@@ -78,9 +78,9 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
 
         {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
             favourite.change3Months =
-            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
+            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingUp /> </li> :
             favourite.change3Months =
-            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
+            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingDown /> </li>
         };
         // console.log("Before sending", favourite);
         addToFavourites(favourite)
@@ -94,7 +94,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
         
         {stockDetails && stockPrices ? 
         <div className='card'>
-        <Card  clasName='text-center' style={{width:'100%', margin:'auto'}}>
+        <Card  style={{width:'100%', margin:'auto'}}>
             <Card.Header>  <Button variant="success" onClick={handleShowAddPosition}>
                  <AiFillFileAdd />
                 </Button> <h3 style={{textAlign:'center'}}><b>{stockDetails.companyName}</b>
@@ -184,7 +184,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                         <Form.Label>Price Paid Per Share</Form.Label>
                         <Form.Control onChange={handleNewPriceShares} type="number"  placeholder="Price"  step="0.01" min="0" />
                         <Form.Text className="text-muted">
-                        <p>Current Market Value: ${stockPrices[0].open + stockPrices[0].change }</p>
+                        <p>Current Market Value: $ {(stockPrices[0].open + stockPrices[0].change).toFixed(2)}</p>
                         <p>If Price Paid is Different to Current Market Value (Defaulted Value), Please Input the Price Paid.</p>
                         
                         </Form.Text>

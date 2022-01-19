@@ -19,9 +19,10 @@ const MasterContainer = () => {
 
 
     useEffect(() => {
-      // getCurrentStocks()
-      // .then(data => setApiData(data))
+      getCurrentStocks()
+      .then(data => setApiData(data))
     },[]);
+
 
     const handleHistPrices = (histPricesObject) => {
       setHistoricalPrices(histPricesObject)

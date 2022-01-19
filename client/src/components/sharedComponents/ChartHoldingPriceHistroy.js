@@ -2,6 +2,7 @@ import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 import {apikeyPH} from '../../services/apikey';
 import {useEffect, useState} from 'react';
+import { fetchedStockPrices } from '../stockMarketComponents/fetchedData';
 
 
 const ChartHoldingPriceHistory = ({holdingData}) => {

@@ -16,11 +16,11 @@ const SideBar = () => {
                     <ul className="sidebarList">
                         <li className="sidebarListItem">
                             <BsFillCollectionFill />
-                            <Link class="text-decoration-none" to="/">My Portfolio</Link>
+                            <Link className="text-decoration-none" to="/">My Portfolio</Link>
                         </li>
                         <li className="sidebarListItem">
                             <AiOutlineStock />
-                            <Link class="text-decoration-none"  to="/stockmarket">Discover</Link>
+                            <Link className="text-decoration-none"  to="/stockmarket">Discover</Link>
                         </li>
                         <li className="sidebarListItem">
                             <AiOutlineHistory />
