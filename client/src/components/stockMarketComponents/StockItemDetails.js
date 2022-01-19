@@ -2,7 +2,7 @@ import React from 'react';
 // import {apikey} from '../../services/apikey';
 // import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Button, Card, Row, Col, Modal, Form} from "react-bootstrap";
-import ChartPriceHistory from '../sharedComponents/ChartPriceHistory';
+import ChartHoldingPriceHistory from '../sharedComponents/ChartHoldingPriceHistroy';
 import {AiFillFileAdd} from "react-icons/ai"
 import {MdCompare} from "react-icons/md"
 import {BiTrendingDown, BiTrendingUp} from "react-icons/bi"
@@ -146,7 +146,7 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                     </Accordion.Item>
                     </Accordion>
                     <li><br /></li>
-                    <li><ChartPriceHistory closePriceData={stockPrices}/></li>
+                    <li><ChartHoldingPriceHistory holdingData={stockDetails}/></li>
 
                     </ul>
                     </Col>

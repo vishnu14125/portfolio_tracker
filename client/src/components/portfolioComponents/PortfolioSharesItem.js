@@ -197,7 +197,7 @@ const PortfolioSharesItem = ({heldShare, removeHeldSharesInCompany, removeSomeSh
             keyboard={false}>
 
                 <Modal.Header closeButton>
-                    <Modal.Title>Price History</Modal.Title>
+                    <Modal.Title>{heldShare.name} ({heldShare.symbol})</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
