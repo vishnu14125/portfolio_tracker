@@ -18,7 +18,7 @@ This is a group project, a full-stack web app using JavaScript and React front-e
 ### Remove shares
 ![](screenshots/5.png)
 
-### Discover page - view real-time stocks
+### Discover page - view real-time stock prices
 ![](screenshots/6.png)
 
 ### Search for any available stock
