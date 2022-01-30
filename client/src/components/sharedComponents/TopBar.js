@@ -8,7 +8,7 @@ const TopBar = () => {
         <div className="topbar">
             <div className="topbarWrapper">
                 <div className="topLeft">
-                    <span className="logo">ShareTracker</span>
+                    <span className="logo">Portfolio Tracker</span>
                     </div>
         <div className="topRight">
           <div className="topbarIconContainer">

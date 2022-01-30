@@ -1,6 +1,4 @@
 import React from 'react';
-// import {apikey} from '../../services/apikey';
-// import {fetchedStockDetails, fetchedStockPrices} from './fetchedData.js';
 import {Accordion, Button, Card, Row, Col, Modal, Form} from "react-bootstrap";
 import ChartHoldingPriceHistory from '../sharedComponents/ChartHoldingPriceHistroy';
 import {AiFillFileAdd} from "react-icons/ai"
@@ -11,8 +9,6 @@ import { useState } from 'react';
 import './StockMarket.css'
 
 const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
-
-
 
     const [showAddPosition, setShowAddPosition] = useState(false)
     const [newNumShares, setNewNumShares] = useState(0)
@@ -25,7 +21,6 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
     const handleNewPriceShares = event => setNewPriceShares(event.target.value)
 
     const handleDate = event => setDate(event.target.value)
-
 
 
 
@@ -47,22 +42,16 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
 
         if (newNumShares <= 0){
             return
-        }else if (newPriceShares <= 0){
+        } else if (newPriceShares <= 0) {
             return
-        }else if (purchaseDate == false){
+        } else if (purchaseDate == false) {
             return
-        }else{
-        postNewShareAdd(shares)
-        handleCloseAddPosition()
-        setNewNumShares(0)
-        setNewPriceShares(0)
-        }
-
-
-
-
-       
-        
+        } else {
+            postNewShareAdd(shares)
+            handleCloseAddPosition()
+            setNewNumShares(0)
+            setNewPriceShares(0)
+        } 
     }
 
     const handleAddToFavourites = () => {
@@ -71,16 +60,16 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
          
         {stockPrices[0].change >= 0 ?
             favourite.currentDayChange =
-            <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingUp /> </li> :
+            <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
             favourite.currentDayChange =
-            <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingDown /> </li>
+            <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
         };
 
         {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
             favourite.change3Months =
-            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingUp /> </li> :
+            <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
             favourite.change3Months =
-            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingDown /> </li>
+            <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
         };
         // console.log("Before sending", favourite);
         addToFavourites(favourite)
@@ -88,10 +77,8 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
 
 
 
-
     return (
         <> 
-        
         {stockDetails && stockPrices ? 
         <div className='card'>
         <Card  style={{width:'100%', margin:'auto'}}>
@@ -107,9 +94,8 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                     <Col xs={3}>
                     <img src={stockDetails.image} style={{width:'15%', margin:'auto'}}></img>
                     </Col>
-                    
-                    
                 </Row>
+                
                 <Row>
                     <Col className='text-center'>
                     <ul style={{listStyle:'none'}}>
@@ -119,13 +105,13 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
                     <li><b>Current share price: </b>$ {(stockPrices[0].open + stockPrices[0].change).toFixed(2)}</li>
 
                     {stockPrices[0].change >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingUp /> </li> :
-                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) <BiTrendingDown /> </li>
+                        <li style={{color:'#00b300'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▲ </li> :
+                        <li style={{color:'red'}}><b>Current day change: </b> $ {stockPrices[0].change} ({(stockPrices[0].change *100 /stockPrices[0].open).toFixed(2)} %) ▼ </li>
                     }
 
                     {(stockPrices[0].close - stockPrices[64].close) >= 0 ?
-                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingUp /> </li> :
-                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) <BiTrendingDown /> </li>
+                        <li style={{color:'#00b300'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▲ </li> :
+                        <li style={{color:'red'}}><b>Change since 3 months ago: </b> $ {(stockPrices[0].close - stockPrices[64].close).toFixed(2)} ({((stockPrices[0].close - stockPrices[64].close) *100 / stockPrices[64].close).toFixed(2)} %) ▼ </li>
                     }
 
                     <li><b>Last dividend: </b>{stockDetails.lastDiv}</li>
@@ -154,7 +140,6 @@ const StockItemDetails = ({addToFavourites, stockPrices, stockDetails}) => {
             </Card.Body>
         </Card>
         
-
         </div>
         : null}
 

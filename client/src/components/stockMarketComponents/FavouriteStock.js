@@ -8,11 +8,6 @@ import { useState } from 'react';
 
 const FavouriteStock = ({favourite, stockPrices}) => {
 
-
-
-
-
-
     const [showAddPosition, setShowAddPosition] = useState(false)
     const [newNumShares, setNewNumShares] = useState(0)
     const [newPriceShares, setNewPriceShares] = useState(0)
@@ -24,8 +19,6 @@ const FavouriteStock = ({favourite, stockPrices}) => {
     const handleNewPriceShares = event => setNewPriceShares(event.target.value)
 
     const handleDate = event => setDate(event.target.value)
-
-
 
 
     const handleAddPositionSubmit = (event) => {
@@ -44,29 +37,19 @@ const FavouriteStock = ({favourite, stockPrices}) => {
             avgPurchasePrice
         }
 
-        if (newNumShares <= 0){
+        if (newNumShares <= 0) {
             return
-        }else if (newPriceShares <= 0){
+        } else if (newPriceShares <= 0) {
             return
-        }else if (purchaseDate == false){
+        } else if (purchaseDate == false) {
             return
-        }else{
-        postNewShareAdd(shares)
-        handleCloseAddPosition()
-        setNewNumShares(0)
-        setNewPriceShares(0)
-        }
-
-
-
-
-       
-        
+        } else {
+            postNewShareAdd(shares)
+            handleCloseAddPosition()
+            setNewNumShares(0)
+            setNewPriceShares(0)
+        }  
     }
-
-
-
-
 
 
     return (
@@ -116,17 +99,11 @@ const FavouriteStock = ({favourite, stockPrices}) => {
                     <li><br /></li>
                     <li><ChartHoldingPriceHistory holdingData={favourite}/></li>
                     </ul>
-                    </Col>
-
-
-
-
+                </Col>
                 </Row>
             </Card.Body>
         </Card>
         <br></br>
-
-
 
 
         <Modal
