@@ -3,52 +3,18 @@ Portfolio Tracker app allows a user to track their shareholdings performance and
 
 This is a group project, a full-stack web app using JavaScript and React front-end, Express server, and MongoDB database back-end.
 
+
 ### Portfolio Tracker Application Demo
 ![](screenshots/portfolio_tracker.gif)
 
-### Discover page - view real-time stock prices
+### Discover page - view and search any available stock with real-time prices
 ![](screenshots/discover.png)
-
-### Search for any available stock
-![](screenshots/search.png)
 
 ### View selected stock, read company description, view historical price performance
 ![](screenshots/card.png)
 
 ### My Portfolio page
 ![](screenshots/portfolio.png)
-
-
-
-<!-- ### Current Portfolio performance
-![](screenshots/2.png)
-
-### View shareholding historical performance
-![](screenshots/3.png)
-
-### Add more shares
-![](screenshots/4.png)
-
-### Remove shares
-![](screenshots/5.png)
-
-### Discover page - view real-time stock prices
-![](screenshots/6.png)
-
-### Search for any available stock
-![](screenshots/7.png)
-
-### View selected stock, read company description, view historical price performance
-![](screenshots/8.png)
-
-### Compare selected stock cards
-![](screenshots/9.png)
-
-### Add new shareholdings
-![](screenshots/10.png)
-
-### View portfolio with updated shares
-![](screenshots/11.png) -->
 
 
 ## Project brief
