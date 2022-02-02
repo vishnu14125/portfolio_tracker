@@ -6,8 +6,7 @@ This is a group project, a full-stack web app using JavaScript and React front-e
 
 ### Portfolio Tracker Application Demo
 ![](screenshots/portfolio_tracker.gif)
-
-![](screenshots/portfolio_tracker_q.gif)
+![](screenshots/portfolio_tracker_original.gif)
 
 ### Discover page - view and search any available stock with real-time prices
 ![](screenshots/discover.png)
