@@ -33,20 +33,23 @@ Discover Page
 A local trader has come to you with a portfolio of shares. She wants to be able to analyse it more effectively. She has a small sample data set to give you and would like you to build a Minimum Viable Product that uses the data to display her portfolio so that she can make better decisions.
 
 ## MVP
+
 A user should be able to:
 
-- view total current value.
-- view individual and total performance trends.
-- retrieve a list of share prices from an external API and allow the user to add shares to her portfolio.
-- View a chart of the current values in her portfolio.
+- Add/Remove/Update/Delete Shares
+- View total current value.
+- View individual and total performance trends.
+- Retrieve a list of share prices from an external API and add shares to their portfolio.
+- View a chart of the current values in their portfolio.
 
 ## Extensions
+
 - View current share price of individual shareholdings.
-- View average and total paid prices of individual shares in the portfolio.
-- View a chart of total paid price, total value, profit, or loss.
-- Implement a search box to find a specific stock from an external API.
+- View average and total paid prices for individual shares in the portfolio.
+- View a chart of total paid price, total value and profit/loss.
+- Implement a search box to find a specific stock using external API data.
 - Temporarily add searched and selected stock to compare.
-- Display line chart for share price performance over last 3 months.
+- Compare past share performance data for any publicly traded company.
 
 ## API, Libraries, Resources
 - https://financialmodelingprep.com/ (Requires an account)
