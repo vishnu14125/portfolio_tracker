@@ -1,7 +1,7 @@
 # Portfolio Tracker
-The Portfolio Tracker app allows a user to track their shareholdings performance and total portfolio value in real-time. The "Discover" page allows a user to select a number of stocks provided by the external API, real-time data comes from the NASDAQ stock exchange. User is able to compare different stocks, add them to their portfolio and track the total portfolio value in real-time which is displayed on "My Portfolio" page.
+The Portfolio Tracker app allows a user to track their shareholdings performance and total portfolio value in real-time. The "Discover" page allows a user to select a number of stocks provided by an external API, real-time data comes from the NASDAQ stock exchange. User is able to compare different stocks, add them to their portfolio and track the total portfolio value in real-time which is displayed on "My Portfolio" page.
 
-This is a group project, a full-stack web app using JavaScript and React front-end, Express server, and MongoDB database back-end.
+Build using MongoDB, Express, React, Node.
 
 
 ## Video Demo and Screenshots
@@ -36,7 +36,7 @@ A local trader has come to you with a portfolio of shares. She wants to be able 
 
 A user should be able to:
 
-- Add/Remove/Update/Delete Shares
+- Add/Remove/Update/Delete Shares.
 - View total current value.
 - View individual and total performance trends.
 - Retrieve a list of share prices from an external API and add shares to their portfolio.
@@ -59,12 +59,12 @@ A user should be able to:
 - https://www.mongodb.com/
 - https://nodejs.org/en/
 
-#
 ## The project is built using:
-* JavaScript
-* React (front-end)
-* Express (server)
-* MongoDB (back-end)
+#
+* Javascript (Node)
+* React
+* Express
+* MongoDB
 * HTML / CSS
 * Additional libraries used: HighCharts, Bootstrap
 The application is using Financial Modeling Prep API as a source of stock data: https://financialmodelingprep.com/developer/docs/
