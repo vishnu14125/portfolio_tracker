@@ -60,7 +60,6 @@ A user should be able to:
 - https://nodejs.org/en/
 
 ## The project is built using:
-#
 * Javascript (Node)
 * React
 * Express
