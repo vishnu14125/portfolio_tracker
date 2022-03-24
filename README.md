@@ -79,6 +79,8 @@ The application is using Financial Modeling Prep API as a source of stock data: 
 To run this application locally, sign-up to get a free API key kere: https://financialmodelingprep.com/. Then inside ``` client/src/services ``` folder create a new file ```apikey.js```. Inside this file insert the line from bellow adding your API key where indicated:
 
 ```
+
 export const apikey = "API_key_here"
 export const apikeyPH = "API_key_here"
+
 ```
