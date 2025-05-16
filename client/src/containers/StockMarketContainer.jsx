@@ -1,3 +1,4 @@
+ 
 import React, {useState, useEffect} from 'react';
 import StockMarketList from '../components/stockMarketComponents/StockMarketList';
 import StockMarketSearch from '../components/stockMarketComponents/StockMarketSearch';

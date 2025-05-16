@@ -2,7 +2,7 @@ const fetchedData = [{"symbol":"AAPL","companyName":"Apple Inc.","marketCap":281
 
 
 
-const stockPrices = [
+const fetchedStockPrices = [
     {
     "date": "2022-01-14",
     "open": 171.34,
@@ -981,7 +981,7 @@ const stockPrices = [
     ]
 
 
-const stockDetails = {
+const fetchedStockDetails = {
     "symbol": "AAPL",
     "price": 173.07,
     "beta": 1.202736,
@@ -1020,9 +1020,13 @@ const stockDetails = {
     "isFund": false
     }
 
-module.exports = {
-    fetchedData: fetchedData,
-    fetchedStockPrices: stockPrices,
-    fetchedStockDetails: stockDetails
-};
+// module.exports = {
+//     fetchedData: fetchedData,
+//     fetchedStockPrices: stockPrices,
+//     fetchedStockDetails: stockDetails
+// };
+
+export { fetchedData, fetchedStockPrices, fetchedStockDetails };
+
+
      
