@@ -1,93 +1,3 @@
-// require('dotenv').config();
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
-// const cors = require('cors');
-
-// const User = require('./models/User');
-// const authMiddleware = require('./middleware/auth');
-
-// const app = express();
-// app.use(cors());
-// app.use(express.json());
-
-// const PORT = process.env.PORT || 5000;
-
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-// .then(() => console.log('MongoDB connected'))
-// .catch(err => console.error(err));
-
-// // Register Route
-// app.post('/register', async (req, res) => {
-//   const { name, email, password } = req.body;
-
-//   try {
-//     const existingUser = await User.findOne({ email });
-//     if (existingUser) return res.status(400).json({ message: 'Email already registered' });
-
-//     const hashedPassword = await bcrypt.hash(password, 10);
-
-//     const newUser = new User({
-//       name,
-//       email,
-//       password: hashedPassword,
-//     });
-
-//     await newUser.save();
-
-//     res.status(201).json({ message: 'User registered successfully' });
-
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error });
-//   }
-// });
-
-// // Login Route
-// app.post('/login', async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await User.findOne({ email });
-//     if (!user) return res.status(400).json({ message: 'Invalid email or password' });
-
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
-
-//     // Create and sign JWT token
-//     const token = jwt.sign(
-//       { _id: user._id, email: user.email, name: user.name },
-//       process.env.JWT_SECRET,
-//       { expiresIn: '1h' }
-//     );
-
-//     res.json({ token, message: 'Login successful' });
-
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error });
-//   }
-// });
-
-// // Example Protected Route
-// app.get('/profile', authMiddleware, async (req, res) => {
-//   try {
-//     const user = await User.findById(req.user._id).select('-password'); // exclude password
-//     if (!user) return res.status(404).json({ message: 'User not found' });
-
-//     res.json(user);
-
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error });
-//   }
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
- 
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -103,7 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -111,13 +20,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error(err));
 
-// JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 
-// Middleware to protect routes
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+  const token = authHeader && authHeader.split(' ')[1]; 
 
   if (!token) return res.status(401).json({ error: 'Access denied, no token provided' });
 
@@ -128,11 +36,9 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// Shares routes
 const sharesRouter = createRouter(Share);
 app.use('/api/shares', sharesRouter);
 
-// Registration route
 app.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -152,7 +58,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Login route
+
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -165,7 +71,6 @@ app.post('/login', async (req, res) => {
     const isMatch = await user.comparePassword(password);
     if (!isMatch) return res.status(400).json({ error: 'Incorrect password' });
 
-    // Create token
     const token = jwt.sign({ userId: user._id, name: user.name, email: user.email }, JWT_SECRET, {
       expiresIn: '1h'
     });
@@ -177,7 +82,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Example of protected route
+
 app.get('/api/protected', authenticateToken, (req, res) => {
   res.json({ message: 'This is protected data.', user: req.user });
 });

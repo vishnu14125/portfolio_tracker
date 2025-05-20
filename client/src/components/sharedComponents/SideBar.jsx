@@ -23,8 +23,8 @@ const SideBar = () => {
                             <Link className="text-decoration-none"  to="/stockmarket">Discover</Link>
                         </li>
                         <li className="sidebarListItem">
-                            <AiOutlineHistory />
-                             History
+                            {/* <AiOutlineHistory /> */}
+                             {/* History */}
                         </li>
                     </ul>
                 </div>

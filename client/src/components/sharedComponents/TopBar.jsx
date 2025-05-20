@@ -47,11 +47,11 @@ const TopBar = () => {
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
-            <MdNotificationsNone size="30px" />
-            <span className="topIconBadge">2</span>
+            <MdNotificationsNone size="0px" />
+            <span className="topIconBadge"></span>
           </div>
           <div className="topbarIconContainer">
-            <MdOutlineSettings size="30px" />
+            <MdOutlineSettings size="0px" />
           </div>
           <div className="topbarIconContainer" onClick={() => setModalType("login")}>
             <CgProfile size="30px" />
